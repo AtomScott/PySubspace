@@ -1,0 +1,312 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>cvlab_toolbox &mdash; cvlab_toolbox 0.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="This is sample markdown file with a subspace classifier." href="../examples/MNIST_with_SM.html" />
+    <link rel="prev" title="Welcome to cvlab_toolbox’s documentation!" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> cvlab_toolbox
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tutorials:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">cvlab_toolbox</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install">Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#coding-styles">Coding styles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contribution-rules">Contribution rules</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/MNIST_with_SM.html">This is sample markdown file with a subspace classifier.</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../source/cvt.html">cvt package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cvlab_toolbox</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>cvlab_toolbox</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorials/README.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cvlab-toolbox">
+<h1>cvlab_toolbox<a class="headerlink" href="#cvlab-toolbox" title="Permalink to this headline">¶</a></h1>
+<p>This is the repository of CVLAB toolbox</p>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Scikit-learn API</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">randint</span><span class="p">,</span> <span class="n">rand</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span> <span class="nn">cvt.models</span> <span class="kn">import</span> <span class="n">KernelMSM</span>
+
+<span class="n">dim</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n_class</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">n_train</span><span class="p">,</span> <span class="n">n_test</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span>
+
+<span class="c1"># input data X is list of vector sets (list of 2d-arrays)</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand</span><span class="p">(</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">dim</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_train</span><span class="p">)]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand</span><span class="p">(</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">dim</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_test</span><span class="p">)]</span>
+
+<span class="c1"># labels y is 1d-array</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">n_train</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">n_test</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">KernelMSM</span><span class="p">(</span><span class="n">n_subdims</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="c1"># fit</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="c1"># predict</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>pip</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -U git+https://github.com/ComputerVisionLaboratory/cvlab_toolbox
+</pre></div>
+</div>
+</div>
+<div class="section" id="coding-styles">
+<h2>Coding styles<a class="headerlink" href="#coding-styles" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Follow <code class="docutils literal notranslate"><span class="pre">PEP8</span></code> as much as possible</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">English</a></p></li>
+<li><p><a class="reference external" href="http://pep8-ja.readthedocs.io/ja/latest/">日本語</a></p></li>
+</ul>
+</li>
+<li><p>Write a description as <strong>docstring</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">PCA</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">whiten</span> <span class="o">=</span> <span class="bp">False</span><span class="p">):</span>
+  <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    apply PCA</span>
+<span class="sd">    components, explained_variance = PCA(X)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    X: ndarray, shape (n_samples, n_features)</span>
+<span class="sd">      matrix of input vectors</span>
+
+<span class="sd">    whiten: boolean</span>
+<span class="sd">      if it is True, the data is treated as whitened</span>
+<span class="sd">      on each dimensions (average is 0 and variance is 1)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    components: ndarray, shape (n_features, n_features)</span>
+<span class="sd">      the normalized component vectors</span>
+
+<span class="sd">    explained_variance: ndarray, shape (n_features)</span>
+<span class="sd">      the variance of each vectors</span>
+<span class="sd">  &#39;&#39;&#39;</span>
+
+  <span class="o">...</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="contribution-rules">
+<h2>Contribution rules<a class="headerlink" href="#contribution-rules" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Make a pull request</p></li>
+<li><p>Ask some lab members to review the code</p></li>
+<li><p>when all agreements are taken, ask any admin member to merge it</p></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../examples/MNIST_with_SM.html" class="btn btn-neutral float-right" title="This is sample markdown file with a subspace classifier." accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to cvlab_toolbox’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Atom Scott
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

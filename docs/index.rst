@@ -1,5 +1,5 @@
 .. cvlab_toolbox documentation master file, created by
-   sphinx-quickstart on Thu Dec 12 18:26:10 2019.
+   sphinx-quickstart on Thu Dec 12 20:08:18 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
@@ -8,8 +8,21 @@ Welcome to cvlab_toolbox's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Tutorials:
 
+   ./tutorials/README
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Examples:
+
+   ./examples/MNIST_with_SM
+
+.. toctree::
+    :maxdepth: 4
+    :caption: API reference
+    
+    ./source/cvt
 
 
 Indices and tables
