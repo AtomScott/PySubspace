@@ -6,6 +6,10 @@
 Welcome to cvlab_toolbox's documentation!
 =========================================
 
+**Caution**.
+This is not the official documentation, it's just an demo RTD I made to check if RTD hosting worked.
+Please see [this repo](https://github.com/ComputerVisionLaboratory/cvlab_toolbox) for the latest stuff. 
+
 .. toctree::
    :maxdepth: 2
    :caption: Tutorials:

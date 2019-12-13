@@ -1,5 +1,8 @@
-# cvlab_toolbox
-This is the repository of CVLAB toolbox
+# Getting Started
+
+## Introduction
+This is the repository of [CVLAB](https://en.home.cvlab.cs.tsukuba.ac.jp/) toolbox, which contains various subspace methods for classification.
+
 
 
 ## Usage
