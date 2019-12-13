@@ -88,10 +88,7 @@
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/getting_started.html">Subspace Methods at a Glance</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../examples/MNIST_with_SM.html">This is sample markdown file with a subspace classifier.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Concepts Walkthrough</a></li>
 </ul>
 <p class="caption"><span class="caption-text">API reference</span></p>
 <ul class="current">
@@ -270,7 +267,13 @@
 <li><p><strong>X</strong> (<em>list of 2d-arrays</em><em>, </em><em>(</em><em>n_classes</em><em>, </em><em>n_samples</em><em>, </em><em>n_dims</em><em>)</em>) – Training vectors. n_classes is count of classes.
 n_samples is number of vectors of samples, this is variable across each classes.
 n_dims is number of dimentions of vectors.</p></li>
-<li><p><strong>y</strong> (<em>integer array</em><em>, </em><em>(</em><em>n_classes</em><em>)</em>) – Class labels of training vectors.</p></li>
+<li><p><strong>y</strong> (<em>integer array</em><em>, </em><em>(</em><em>n_classes</em><em>)</em>) – <p>Class labels of training vectors.
+e.g.</p>
+<blockquote>
+<div><p>y =  np.unique(labels).astype(int)
+y = range(len(X))</p>
+</div></blockquote>
+</p></li>
 </ul>
 </dd>
 </dl>
@@ -282,7 +285,7 @@ n_dims is number of dimentions of vectors.</p></li>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>deep</strong> (<em>boolean</em><em>, </em><em>optional</em>) – If True, will return the parameters for this estimator and
+<dd class="field-odd"><p><strong>deep</strong> (<em>bool</em><em>, </em><em>default=True</em>) – If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -341,11 +344,14 @@ contained subobjects that are estimators.</p>
 <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s possible to update each
 component of a nested object.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**params</strong> (<em>dict</em>) – Estimator parameters.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>self</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> – Estimator instance.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
 </dd>
 </dl>
 </dd></dl>

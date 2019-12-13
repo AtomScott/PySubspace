@@ -1,0 +1,582 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MNIST example with Subspace Method &mdash; cvlab_toolbox 0.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> cvlab_toolbox
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/getting_started.html">Subspace Methods at a Glance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Concepts Walkthrough</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../source/cvt.html">cvt package</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html">Coding styles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html#contribution-rules">Contribution rules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cvlab_toolbox</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>MNIST example with Subspace Method</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/examples/MNIST_example_wtih_SM.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mnist-example-with-subspace-method">
+<h1>MNIST example with Subspace Method<a class="headerlink" href="#mnist-example-with-subspace-method" title="Permalink to this headline">¶</a></h1>
+<p>In the example code of this tutorial, we assume for simplicity that the
+following symbols are already imported.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span><span class="o">,</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">pardir</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">fetch_openml</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span><span class="p">,</span><span class="n">RandomizedSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="k">import</span> <span class="n">check_random_state</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">accuracy_score</span>
+
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">randint</span> <span class="k">as</span> <span class="n">sp_randint</span>
+
+<span class="kn">from</span> <span class="nn">cvt.models</span> <span class="k">import</span> <span class="n">SubspaceMethod</span>
+</pre></div>
+</div>
+<p>In this tutorial section, we will learn how to train a simple subspace
+based classifier to classify images of hand-written digits in the
+popular MNIST dataset. To show the effectiveness of this method we will
+compare the results to a sklearn KNN classifier.</p>
+<p>The MNIST dataset contains 50,000 training examples and 10,000 test
+examples. Each example is a set of a 28 x 28 greyscale image and a
+corresponding class label. Since the digits from 0 to 9 are used, there
+are 10 classes for the labels.</p>
+<p>We will conduct the procedure in the following steps.</p>
+<ol class="arabic simple">
+<li><p>Prepare a dataset</p></li>
+<li><p>Train the SV classifier</p></li>
+<li><p>Train the SM classifier</p></li>
+<li><p>Improving results</p></li>
+<li><p>In depth comparison</p></li>
+</ol>
+<div class="section" id="prepare-a-dataset">
+<h2>1. Prepare a dataset<a class="headerlink" href="#prepare-a-dataset" title="Permalink to this headline">¶</a></h2>
+<p>Sklearn provides an (experimental) API to fetch datasets from openml by
+name or dataset id.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fetch the MNIST data</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="s1">&#39;mnist_784&#39;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display an example from the MNIST dataset.</span>
+<span class="c1"># `x` contains the input image array and `t` contains that target class</span>
+<span class="c1"># label as an integer.</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-dark&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Image of label: </span><span class="si">{t}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/output_5_0.png" src="../_images/output_5_0.png" />
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="k">import</span> <span class="n">golden</span> <span class="k">as</span> <span class="n">g_ratio</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="k">import</span> <span class="n">DataFrame</span> <span class="k">as</span> <span class="n">DF</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Counter</span>
+
+<span class="c1"># Display the distribution of the testset and trainset</span>
+<span class="c1"># Take note of the slight inbalance maybe?</span>
+<span class="n">fig</span> <span class="o">=</span>  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="n">g_ratio</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;variable&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">DF</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y_train</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">melt</span><span class="p">(),</span> <span class="n">ax</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of data in trainset&#39;</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;variable&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">DF</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y_test</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">melt</span><span class="p">(),</span> <span class="n">ax</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of data in testset&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/output_6_0.png" src="../_images/output_6_0.png" />
+</div>
+<div class="section" id="train-a-support-vector-classifier">
+<h2>2. Train a Support Vector classifier<a class="headerlink" href="#train-a-support-vector-classifier" title="Permalink to this headline">¶</a></h2>
+<p>From the scikit learn
+<a class="reference external" href="https://scikit-learn.org/stable/modules/svm.html#svm-kernels">docs</a>…</p>
+<p>Support vector machines (SVMs) are a set of supervised learning methods
+used for classification, regression and outliers detection.</p>
+<p>The advantages of support vector machines are:</p>
+<ul class="simple">
+<li><p>Effective in high dimensional spaces.</p></li>
+<li><p>Still effective in cases where number of dimensions is greater than
+the number of samples.</p></li>
+<li><p>Uses a subset of training points in the decision function (called
+support vectors), so it is also memory efficient.</p></li>
+<li><p>Versatile: different Kernel functions can be specified for the
+decision function. Common kernels are provided, but it is also
+possible to specify custom kernels.</p></li>
+</ul>
+<p>The disadvantages of support vector machines include:</p>
+<ul class="simple">
+<li><p>If the number of features is much greater than the number of samples,
+avoid over-fitting in choosing Kernel functions and regularization
+term is crucial.</p></li>
+<li><p>SVMs do not directly provide probability estimates, these are
+calculated using an expensive five-fold cross-validation.</p></li>
+</ul>
+<hr class="docutils" />
+<p>Here we will train a C-Support Vector classifier with a linear kernel
+using an <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html">implementaion by scikit
+learn</a>.
+Although the rbf kernel will work better, it won’t be fair to compare it
+to the linear subspace method. SM has non-linear extensions such as
+kernel-MSM which will better suited for comparison.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="k">import</span> <span class="n">SVC</span>
+
+<span class="n">svc</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+
+<span class="c1"># Fit the data</span>
+<span class="n">svc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="c1"># Predict the classes</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">svc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="c1"># Caluclate the accuracy</span>
+<span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.901</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="train-a-k-nn-classifier">
+<h2>3. Train a K-NN Classifier<a class="headerlink" href="#train-a-k-nn-classifier" title="Permalink to this headline">¶</a></h2>
+<p>From the scikit learn
+<a class="reference external" href="https://scikit-learn.org/stable/modules/neighbors.html#classification">docs</a>…</p>
+<p>Neighbors-based classification is a type of instance-based learning or
+non-generalizing learning: it does not attempt to construct a general
+internal model, but simply stores instances of the training data.
+Classification is computed from a simple majority vote of the nearest
+neighbors of each point: a query point is assigned the data class which
+has the most representatives within the nearest neighbors of the point.</p>
+<p>The optimal choice of the value K is highly data-dependent: in general a
+larger suppresses the effects of noise, but makes the classification
+boundaries less distinct.</p>
+<hr class="docutils" />
+<p>The K-NN classifier is simple and effective but it’s computation does
+take time and scales in quadractic time.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="k">import</span> <span class="n">KNeighborsClassifier</span>
+
+<span class="n">knnc</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># Fit the data</span>
+<span class="n">knnc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="c1"># Predict the classes</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">knnc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="c1"># Caluclate the accuracy</span>
+<span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.9435</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="train-a-sm-classifier">
+<h2>4. Train a SM classifier<a class="headerlink" href="#train-a-sm-classifier" title="Permalink to this headline">¶</a></h2>
+<p>Next, we will use the Subspace Method (SM) to perform classification. In
+SM we classify an input pattern vector into several classes based on the
+minimum distance or angle between the input pattern vector and each
+class subspace. A class subspace corresponds to the distribution of
+pattern vectors of the class in high dimensional vector space.</p>
+<p>For more infomation on how the SM works, see
+<a class="reference external" href="http://www.cvlab.cs.tsukuba.ac.jp/~kfukui/english/epapers/subspace_method.pdf">here</a>.</p>
+<p>One caveat to remeber when using this implementation is that the input
+must be <em>list</em> of 2d-arrays (n_classes, n_dims, n_samples) and a list of
+labels for each class (n_classes). This may deviate from sklearn style
+principles, but I think it is more intuitive when thinking in subspaces.</p>
+<p>※ Input may be revised in the future</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This function will take in the X, y defined above</span>
+<span class="c1"># and return the data in the format we need</span>
+<span class="k">def</span> <span class="nf">format_input</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y</span><span class="o">==</span><span class="n">t</span><span class="p">)]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">smc</span> <span class="o">=</span> <span class="n">SubspaceMethod</span><span class="p">(</span><span class="n">n_subdims</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">faster_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Fit the data</span>
+<span class="n">smc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="o">*</span><span class="n">format_input</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
+<span class="c1"># Predict the classes</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">smc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="c1"># Caluclate the accuracy</span>
+<span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.916</span>
+</pre></div>
+</div>
+<p>An optimized implementation can be invoked if available. Use this by
+passing <code class="docutils literal notranslate"><span class="pre">faster_mode=True</span></code>.</p>
+<p>Below is a speed comparison.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> SubspaceMethod(n_subdims=5, faster_mode=False).fit(*format_input(X_train, y_train))
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>427 ms ± 18.2 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> SubspaceMethod(n_subdims=5, faster_mode=True).fit(*format_input(X_train, y_train))
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>425 ms ± 20.3 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre></div>
+</div>
+</div>
+<div class="section" id="improving-results">
+<h2>5. Improving results<a class="headerlink" href="#improving-results" title="Permalink to this headline">¶</a></h2>
+<p>Both the K-nearest neighbors classifier and the subspace method
+classifier can benefit from hyperparameter tuning.</p>
+<ul class="simple">
+<li><p>The number K nearest neighbors to include in the majority vote for
+KNN.</p></li>
+<li><p>The number N subspaces to use for SM.</p></li>
+</ul>
+<p>Since we are only tuning one parameter, we can conduct an exhaustive
+search. We’ll also keep track of the run time to see how the
+hyperparameters effect exectution length.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">time</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="k">import</span> <span class="n">tqdm</span>
+
+<span class="c1"># Store results in a dictionary:</span>
+<span class="c1"># {(param-value, classifier): (accuracy, time)}</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># tqdm shows the approx time left</span>
+<span class="c1"># a useful extension for long loops</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">102</span><span class="p">,</span> <span class="mi">10</span><span class="p">)):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="n">svc</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+    <span class="n">svc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">svc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">results</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="s1">&#39;SVC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">),</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="n">knnc</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">knnc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">knnc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">results</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="s1">&#39;KNN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">),</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="n">smc</span> <span class="o">=</span> <span class="n">SubspaceMethod</span><span class="p">(</span><span class="n">n_subdims</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">faster_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">smc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="o">*</span><span class="n">format_input</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">smc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">results</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="s1">&#39;SM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">),</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/11 [00:00&lt;?, ?it/s][A
+  9%|▉         | 1/11 [00:45&lt;07:36, 45.60s/it][A
+ 18%|█▊        | 2/11 [01:32&lt;06:53, 45.99s/it][A
+ 27%|██▋       | 3/11 [02:22&lt;06:17, 47.15s/it][A
+ 36%|███▋      | 4/11 [03:10&lt;05:31, 47.36s/it][A
+ 45%|████▌     | 5/11 [03:56&lt;04:42, 47.16s/it][A
+ 55%|█████▍    | 6/11 [04:43&lt;03:54, 46.98s/it][A
+ 64%|██████▎   | 7/11 [05:30&lt;03:07, 46.86s/it][A
+ 73%|███████▎  | 8/11 [06:18&lt;02:21, 47.32s/it][A
+ 82%|████████▏ | 9/11 [07:06&lt;01:35, 47.61s/it][A
+ 91%|█████████ | 10/11 [07:55&lt;00:48, 48.06s/it][A
+100%|██████████| 11/11 [08:42&lt;00:00, 47.61s/it][A
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>param value</th>
+      <th>Classifier</th>
+      <th>accuracy</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>7</th>
+      <td>31</td>
+      <td>SM</td>
+      <td>0.9515</td>
+      <td>1.200320</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>41</td>
+      <td>SM</td>
+      <td>0.9500</td>
+      <td>1.427801</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>21</td>
+      <td>SM</td>
+      <td>0.9465</td>
+      <td>0.939676</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>51</td>
+      <td>SM</td>
+      <td>0.9460</td>
+      <td>1.602674</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>61</td>
+      <td>SM</td>
+      <td>0.9420</td>
+      <td>1.836834</td>
+    </tr>
+  </tbody>
+</table>
+</div><div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span>  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="o">*</span><span class="n">g_ratio</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="n">k</span><span class="p">,</span> <span class="n">clf</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span><span class="n">time</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">clf</span><span class="p">),</span> <span class="p">(</span><span class="n">score</span><span class="p">,</span><span class="n">time</span><span class="p">)</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">DF</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;param value&#39;</span><span class="p">,</span><span class="s1">&#39;Classifier&#39;</span><span class="p">,</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">])</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;param value&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Classifier&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Execution Time Comparison&quot;</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;param value&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Classifier&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Accuracy Score Comparison&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/output_19_0.png" src="../_images/output_19_0.png" />
+</div>
+<div class="section" id="in-depth-comparison">
+<h2>6. In depth comparison<a class="headerlink" href="#in-depth-comparison" title="Permalink to this headline">¶</a></h2>
+<p>Since we use an scikit-learn like API, we can utilize a lot of the
+samples that can be found on their website.</p>
+<p>Here we will follow this
+<a class="reference external" href="https://scikit-learn.org/stable/auto_examples/classification/plot_digits_classification.html">page</a>
+to easily calculate the precision, recall, f1-score and confusion matrix
+for each model.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knnc</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">knnc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">svc</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+<span class="n">svc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">smc</span> <span class="o">=</span> <span class="n">SubspaceMethod</span><span class="p">(</span><span class="n">n_subdims</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">faster_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">smc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="o">*</span><span class="n">format_input</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
+<span class="n">smc</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="c1"># これいらないようにコード変える</span>
+</pre></div>
+</div>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">metrics</span>
+
+
+<span class="k">def</span> <span class="nf">plot_stats</span><span class="p">(</span><span class="n">classifier</span><span class="p">):</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">svc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">disp</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+    <span class="n">disp</span><span class="o">.</span><span class="n">figure_</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Classification report for classifier </span><span class="si">%s</span><span class="s2">:</span><span class="se">\n</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span>
+          <span class="o">%</span> <span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">metrics</span><span class="o">.</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plot_stats</span><span class="p">(</span><span class="n">svc</span><span class="p">)</span>
+<span class="n">plot_stats</span><span class="p">(</span><span class="n">knnc</span><span class="p">)</span>
+<span class="n">plot_stats</span><span class="p">(</span><span class="n">smc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Atom Scott
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
