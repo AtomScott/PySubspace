@@ -46,7 +46,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Getting Started" href="tutorials/README.html" /> 
+    <link rel="next" title="Subspace Methods at a Glance" href="tutorials/getting_started.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -95,7 +95,7 @@
             
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/README.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/getting_started.html">Subspace Methods at a Glance</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Examples</span></p>
 <ul>
@@ -188,15 +188,40 @@ Please see <a class="reference external" href="https://github.com/ComputerVision
 </div>
 <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div>We use a Scikit-learn API so it should be pretty easy to get your code up and running. Below is the command to install with pip.</div></blockquote>
+<p>Below is the command to install with pip.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -U git+https://github.com/ComputerVisionLaboratory/cvlab_toolbox
+</pre></div>
+</div>
+<p>We use a Scikit-learn API so it should be pretty easy to get your code up and running. Here’s an example that should work copy&amp;paste.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">randint</span><span class="p">,</span> <span class="n">rand</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span> <span class="nn">cvt.models</span> <span class="kn">import</span> <span class="n">KernelMSM</span>
+
+<span class="n">dim</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n_class</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">n_train</span><span class="p">,</span> <span class="n">n_test</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span>
+
+<span class="c1"># input data X is *list* of vector sets (list of 2d-arrays)</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand</span><span class="p">(</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">dim</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_train</span><span class="p">)]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand</span><span class="p">(</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">dim</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_test</span><span class="p">)]</span>
+
+<span class="c1"># labels y is 1d-array</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">n_train</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">n_test</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">KernelMSM</span><span class="p">(</span><span class="n">n_subdims</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/README.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/getting_started.html">Subspace Methods at a Glance</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
@@ -264,7 +289,7 @@ Please see <a class="reference external" href="https://github.com/ComputerVision
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="tutorials/README.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="tutorials/getting_started.html" class="btn btn-neutral float-right" title="Subspace Methods at a Glance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>

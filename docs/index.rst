@@ -20,12 +20,15 @@ Please see `this repo <https://github.com/ComputerVisionLaboratory/cvlab_toolbox
 
 
 Installation
-===============
- We use a Scikit-learn API so it should be pretty easy to get your code up and running. Below is the command to install with pip. 
+============
+
+Below is the command to install with pip. 
 
 .. code-block:: bash
-    
+
     pip install -U git+https://github.com/ComputerVisionLaboratory/cvlab_toolbox
+
+We use a Scikit-learn API so it should be pretty easy to get your code up and running. Here's an example that should work copy&paste.
 
 .. code-block:: python
 
@@ -39,7 +42,7 @@ Installation
     n_class = 4
     n_train, n_test = 20, 5
 
-    # input data X is list of vector sets (list of 2d-arrays)
+    # input data X is *list* of vector sets (list of 2d-arrays)
     X_train = [rand(randint(10, 20), dim) for i in range(n_train)]
     X_test = [rand(randint(10, 20), dim) for i in range(n_test)]
 
@@ -48,9 +51,7 @@ Installation
     y_test = randint(0, n_class, n_test)
 
     model = KernelMSM(n_subdims=3, sigma=0.01)
-    # fit
     model.fit(X_train, y_train)
-    # predict
     pred = model.predict(X_test)
 
     print(accuracy_score(pred, y_test))
