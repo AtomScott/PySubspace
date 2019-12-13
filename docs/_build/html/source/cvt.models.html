@@ -22,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -87,7 +96,7 @@
             
               <p class="caption"><span class="caption-text">Tutorials:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/README.html">cvlab_toolbox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/README.html">Getting Started</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Examples:</span></p>
 <ul>
@@ -190,165 +199,166 @@
 <p>Subspace Method Interface</p>
 <dl class="class">
 <dt id="cvt.models.base_class.ConstrainedSMBase">
-<em class="property">class </em><code class="sig-prename descclassname">cvt.models.base_class.</code><code class="sig-name descname">ConstrainedSMBase</code><span class="sig-paren">(</span><em class="sig-param">n_subdims</em>, <em class="sig-param">n_gds_dims</em>, <em class="sig-param">normalize=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.base_class.ConstrainedSMBase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">cvt.models.base_class.</code><code class="descname">ConstrainedSMBase</code><span class="sig-paren">(</span><em>n_subdims</em>, <em>n_gds_dims</em>, <em>normalize=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.base_class.ConstrainedSMBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#cvt.models.base_class.SMBase" title="cvt.models.base_class.SMBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">cvt.models.base_class.SMBase</span></code></a></p>
 <p>Base class of Constrained Subspace Method</p>
 <dl class="attribute">
 <dt id="cvt.models.base_class.ConstrainedSMBase.param_names">
-<code class="sig-name descname">param_names</code><em class="property"> = {'n_gds_dims', 'n_subdims', 'normalize'}</em><a class="headerlink" href="#cvt.models.base_class.ConstrainedSMBase.param_names" title="Permalink to this definition">¶</a></dt>
+<code class="descname">param_names</code><em class="property"> = {'n_subdims', 'n_gds_dims', 'normalize'}</em><a class="headerlink" href="#cvt.models.base_class.ConstrainedSMBase.param_names" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="cvt.models.base_class.KernelCSMBase">
-<em class="property">class </em><code class="sig-prename descclassname">cvt.models.base_class.</code><code class="sig-name descname">KernelCSMBase</code><span class="sig-paren">(</span><em class="sig-param">n_subdims</em>, <em class="sig-param">n_gds_dims</em>, <em class="sig-param">normalize=False</em>, <em class="sig-param">sigma=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.base_class.KernelCSMBase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">cvt.models.base_class.</code><code class="descname">KernelCSMBase</code><span class="sig-paren">(</span><em>n_subdims</em>, <em>n_gds_dims</em>, <em>normalize=False</em>, <em>sigma=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.base_class.KernelCSMBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#cvt.models.base_class.SMBase" title="cvt.models.base_class.SMBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">cvt.models.base_class.SMBase</span></code></a></p>
 <p>Base class of Kernel Constrained Subspace Method</p>
 <dl class="attribute">
 <dt id="cvt.models.base_class.KernelCSMBase.param_names">
-<code class="sig-name descname">param_names</code><em class="property"> = {'n_gds_dims', 'n_subdims', 'normalize', 'sigma'}</em><a class="headerlink" href="#cvt.models.base_class.KernelCSMBase.param_names" title="Permalink to this definition">¶</a></dt>
+<code class="descname">param_names</code><em class="property"> = {'n_subdims', 'sigma', 'normalize', 'n_gds_dims'}</em><a class="headerlink" href="#cvt.models.base_class.KernelCSMBase.param_names" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="cvt.models.base_class.KernelSMBase">
-<em class="property">class </em><code class="sig-prename descclassname">cvt.models.base_class.</code><code class="sig-name descname">KernelSMBase</code><span class="sig-paren">(</span><em class="sig-param">n_subdims</em>, <em class="sig-param">normalize=False</em>, <em class="sig-param">sigma=None</em>, <em class="sig-param">faster_mode=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.base_class.KernelSMBase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">cvt.models.base_class.</code><code class="descname">KernelSMBase</code><span class="sig-paren">(</span><em>n_subdims</em>, <em>normalize=False</em>, <em>sigma=None</em>, <em>faster_mode=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.base_class.KernelSMBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#cvt.models.base_class.SMBase" title="cvt.models.base_class.SMBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">cvt.models.base_class.SMBase</span></code></a></p>
 <p>Base class of Kernel Subspace Method</p>
 <dl class="attribute">
 <dt id="cvt.models.base_class.KernelSMBase.param_names">
-<code class="sig-name descname">param_names</code><em class="property"> = {'n_subdims', 'normalize', 'sigma'}</em><a class="headerlink" href="#cvt.models.base_class.KernelSMBase.param_names" title="Permalink to this definition">¶</a></dt>
+<code class="descname">param_names</code><em class="property"> = {'n_subdims', 'sigma', 'normalize'}</em><a class="headerlink" href="#cvt.models.base_class.KernelSMBase.param_names" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="cvt.models.base_class.MSMInterface">
-<em class="property">class </em><code class="sig-prename descclassname">cvt.models.base_class.</code><code class="sig-name descname">MSMInterface</code><a class="headerlink" href="#cvt.models.base_class.MSMInterface" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">cvt.models.base_class.</code><code class="descname">MSMInterface</code><a class="headerlink" href="#cvt.models.base_class.MSMInterface" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Prediction interface of Mutual Subspace Method</p>
 <dl class="method">
 <dt id="cvt.models.base_class.MSMInterface.predict_proba">
-<code class="sig-name descname">predict_proba</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.base_class.MSMInterface.predict_proba" title="Permalink to this definition">¶</a></dt>
+<code class="descname">predict_proba</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.base_class.MSMInterface.predict_proba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict class probabilities</p>
-<dl class="simple">
-<dt>X: list of 2d-arrays, (n_vector_sets, n_samples, n_dims)</dt><dd><p>List of input vector sets.</p>
-</dd>
+<dl class="docutils">
+<dt>X: list of 2d-arrays, (n_vector_sets, n_samples, n_dims)</dt>
+<dd>List of input vector sets.</dd>
 </dl>
-<dl class="simple">
-<dt>pred: array, (n_vector_sets)</dt><dd><p>Prediction array</p>
-</dd>
+<dl class="docutils">
+<dt>pred: array, (n_vector_sets)</dt>
+<dd>Prediction array</dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="attribute">
 <dt id="cvt.models.base_class.MSMInterface.test_n_subdims">
-<em class="property">property </em><code class="sig-name descname">test_n_subdims</code><a class="headerlink" href="#cvt.models.base_class.MSMInterface.test_n_subdims" title="Permalink to this definition">¶</a></dt>
+<code class="descname">test_n_subdims</code><a class="headerlink" href="#cvt.models.base_class.MSMInterface.test_n_subdims" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="cvt.models.base_class.SMBase">
-<em class="property">class </em><code class="sig-prename descclassname">cvt.models.base_class.</code><code class="sig-name descname">SMBase</code><span class="sig-paren">(</span><em class="sig-param">n_subdims</em>, <em class="sig-param">normalize=False</em>, <em class="sig-param">faster_mode=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.base_class.SMBase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">cvt.models.base_class.</code><code class="descname">SMBase</code><span class="sig-paren">(</span><em>n_subdims</em>, <em>normalize=False</em>, <em>faster_mode=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.base_class.SMBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.ClassifierMixin</span></code></p>
 <p>Base class of Subspace Method</p>
 <dl class="method">
 <dt id="cvt.models.base_class.SMBase.fit">
-<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.base_class.SMBase.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.base_class.SMBase.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit the model using the given data and parameters</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>X</strong> (<em>list of 2d-arrays</em><em>, </em><em>(</em><em>n_classes</em><em>, </em><em>n_samples</em><em>, </em><em>n_dims</em><em>)</em>) – Training vectors. n_classes is count of classes.
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>X</strong> (<em>list of 2d-arrays</em><em>, </em><em>(</em><em>n_classes</em><em>, </em><em>n_samples</em><em>, </em><em>n_dims</em><em>)</em>) – Training vectors. n_classes is count of classes.
 n_samples is number of vectors of samples, this is variable across each classes.
-n_dims is number of dimentions of vectors.</p></li>
-<li><p><strong>y</strong> (<em>integer array</em><em>, </em><em>(</em><em>n_classes</em><em>)</em>) – <p>Class labels of training vectors.
-e.g.</p>
-<blockquote>
-<div><p>y =  np.unique(labels).astype(int)
-y = range(len(X))</p>
-</div></blockquote>
-</p></li>
+n_dims is number of dimentions of vectors.</li>
+<li><strong>y</strong> (<em>integer array</em><em>, </em><em>(</em><em>n_classes</em><em>)</em>) – Class labels of training vectors.</li>
 </ul>
-</dd>
-</dl>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="cvt.models.base_class.SMBase.get_params">
-<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.base_class.SMBase.get_params" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_params</code><span class="sig-paren">(</span><em>deep=True</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.base_class.SMBase.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>deep</strong> (<em>boolean</em><em>, </em><em>optional</em>) – If True, will return the parameters for this estimator and
-contained subobjects that are estimators.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>params</strong> – Parameter names mapped to their values.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>mapping of string to any</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>deep</strong> (<em>boolean</em><em>, </em><em>optional</em>) – If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>params</strong> – Parameter names mapped to their values.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">mapping of string to any</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="cvt.models.base_class.SMBase.param_names">
-<code class="sig-name descname">param_names</code><em class="property"> = {'n_subdims', 'normalize'}</em><a class="headerlink" href="#cvt.models.base_class.SMBase.param_names" title="Permalink to this definition">¶</a></dt>
+<code class="descname">param_names</code><em class="property"> = {'n_subdims', 'normalize'}</em><a class="headerlink" href="#cvt.models.base_class.SMBase.param_names" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="cvt.models.base_class.SMBase.predict">
-<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.base_class.SMBase.predict" title="Permalink to this definition">¶</a></dt>
+<code class="descname">predict</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.base_class.SMBase.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict classes</p>
-<dl class="simple">
-<dt>X: list of 2d-arrays, (n_vector_sets, n_samples, n_dims)</dt><dd><p>List of input vector sets.</p>
-</dd>
+<dl class="docutils">
+<dt>X: list of 2d-arrays, (n_vector_sets, n_samples, n_dims)</dt>
+<dd>List of input vector sets.</dd>
 </dl>
-<dl class="simple">
-<dt>pred: array, (n_vector_sets)</dt><dd><p>Prediction array</p>
-</dd>
+<dl class="docutils">
+<dt>pred: array, (n_vector_sets)</dt>
+<dd>Prediction array</dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="cvt.models.base_class.SMBase.predict_proba">
-<code class="sig-name descname">predict_proba</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.base_class.SMBase.predict_proba" title="Permalink to this definition">¶</a></dt>
+<code class="descname">predict_proba</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.base_class.SMBase.predict_proba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict class probabilities</p>
-<dl class="simple">
-<dt>X: 2d-array, (n_samples, n_dims)</dt><dd><p>Matrix of input vectors.</p>
-</dd>
+<dl class="docutils">
+<dt>X: 2d-array, (n_samples, n_dims)</dt>
+<dd>Matrix of input vectors.</dd>
 </dl>
-<dl class="simple">
-<dt>pred: array-like, shape: (n_samples)</dt><dd><p>Prediction array</p>
-</dd>
+<dl class="docutils">
+<dt>pred: array-like, shape: (n_samples)</dt>
+<dd>Prediction array</dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="cvt.models.base_class.SMBase.proba2class">
-<code class="sig-name descname">proba2class</code><span class="sig-paren">(</span><em class="sig-param">proba</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.base_class.SMBase.proba2class" title="Permalink to this definition">¶</a></dt>
+<code class="descname">proba2class</code><span class="sig-paren">(</span><em>proba</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.base_class.SMBase.proba2class" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="cvt.models.base_class.SMBase.set_params">
-<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">**parameters</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.base_class.SMBase.set_params" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_params</code><span class="sig-paren">(</span><em>**parameters</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.base_class.SMBase.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The latter have parameters of the form
 <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s possible to update each
 component of a nested object.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>self</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">self</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -359,7 +369,7 @@ component of a nested object.</p>
 <p>Constrained Mutual Subspace Method</p>
 <dl class="class">
 <dt id="cvt.models.cmsm.ConstrainedMSM">
-<em class="property">class </em><code class="sig-prename descclassname">cvt.models.cmsm.</code><code class="sig-name descname">ConstrainedMSM</code><span class="sig-paren">(</span><em class="sig-param">n_subdims</em>, <em class="sig-param">n_gds_dims</em>, <em class="sig-param">normalize=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.cmsm.ConstrainedMSM" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">cvt.models.cmsm.</code><code class="descname">ConstrainedMSM</code><span class="sig-paren">(</span><em>n_subdims</em>, <em>n_gds_dims</em>, <em>normalize=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.cmsm.ConstrainedMSM" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#cvt.models.base_class.MSMInterface" title="cvt.models.base_class.MSMInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">cvt.models.base_class.MSMInterface</span></code></a>, <a class="reference internal" href="#cvt.models.base_class.ConstrainedSMBase" title="cvt.models.base_class.ConstrainedSMBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">cvt.models.base_class.ConstrainedSMBase</span></code></a></p>
 <p>Constrained Mutual Subspace Method</p>
 </dd></dl>
@@ -370,7 +380,7 @@ component of a nested object.</p>
 <p>Kernel Constrained Mutual Subspace Method</p>
 <dl class="class">
 <dt id="cvt.models.kcmsm.KernelCMSM">
-<em class="property">class </em><code class="sig-prename descclassname">cvt.models.kcmsm.</code><code class="sig-name descname">KernelCMSM</code><span class="sig-paren">(</span><em class="sig-param">n_subdims</em>, <em class="sig-param">n_gds_dims</em>, <em class="sig-param">normalize=False</em>, <em class="sig-param">sigma=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.kcmsm.KernelCMSM" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">cvt.models.kcmsm.</code><code class="descname">KernelCMSM</code><span class="sig-paren">(</span><em>n_subdims</em>, <em>n_gds_dims</em>, <em>normalize=False</em>, <em>sigma=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.kcmsm.KernelCMSM" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#cvt.models.base_class.MSMInterface" title="cvt.models.base_class.MSMInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">cvt.models.base_class.MSMInterface</span></code></a>, <a class="reference internal" href="#cvt.models.base_class.KernelCSMBase" title="cvt.models.base_class.KernelCSMBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">cvt.models.base_class.KernelCSMBase</span></code></a></p>
 <p>Kernel Constrained Mutual Subspace Method</p>
 </dd></dl>
@@ -381,20 +391,20 @@ component of a nested object.</p>
 <p>Kernel Mutual Subspace Method</p>
 <dl class="class">
 <dt id="cvt.models.kmsm.KernelMSM">
-<em class="property">class </em><code class="sig-prename descclassname">cvt.models.kmsm.</code><code class="sig-name descname">KernelMSM</code><span class="sig-paren">(</span><em class="sig-param">n_subdims</em>, <em class="sig-param">normalize=False</em>, <em class="sig-param">sigma=None</em>, <em class="sig-param">faster_mode=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.kmsm.KernelMSM" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">cvt.models.kmsm.</code><code class="descname">KernelMSM</code><span class="sig-paren">(</span><em>n_subdims</em>, <em>normalize=False</em>, <em>sigma=None</em>, <em>faster_mode=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.kmsm.KernelMSM" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#cvt.models.base_class.MSMInterface" title="cvt.models.base_class.MSMInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">cvt.models.base_class.MSMInterface</span></code></a>, <a class="reference internal" href="#cvt.models.base_class.KernelSMBase" title="cvt.models.base_class.KernelSMBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">cvt.models.base_class.KernelSMBase</span></code></a></p>
 <p>Kernel Mutual Subspace Method</p>
 <dl class="method">
 <dt id="cvt.models.kmsm.KernelMSM.fast_predict_proba">
-<code class="sig-name descname">fast_predict_proba</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.kmsm.KernelMSM.fast_predict_proba" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fast_predict_proba</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.kmsm.KernelMSM.fast_predict_proba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict class probabilities</p>
-<dl class="simple">
-<dt>X: list of 2d-arrays, (n_vector_sets, n_samples, n_dims)</dt><dd><p>List of input vector sets.</p>
-</dd>
+<dl class="docutils">
+<dt>X: list of 2d-arrays, (n_vector_sets, n_samples, n_dims)</dt>
+<dd>List of input vector sets.</dd>
 </dl>
-<dl class="simple">
-<dt>pred: array, (n_vector_sets)</dt><dd><p>Prediction array</p>
-</dd>
+<dl class="docutils">
+<dt>pred: array, (n_vector_sets)</dt>
+<dd>Prediction array</dd>
 </dl>
 </dd></dl>
 
@@ -406,7 +416,7 @@ component of a nested object.</p>
 <p>Mutual Subspace Method</p>
 <dl class="class">
 <dt id="cvt.models.msm.MutualSubspaceMethod">
-<em class="property">class </em><code class="sig-prename descclassname">cvt.models.msm.</code><code class="sig-name descname">MutualSubspaceMethod</code><span class="sig-paren">(</span><em class="sig-param">n_subdims</em>, <em class="sig-param">normalize=False</em>, <em class="sig-param">faster_mode=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.msm.MutualSubspaceMethod" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">cvt.models.msm.</code><code class="descname">MutualSubspaceMethod</code><span class="sig-paren">(</span><em>n_subdims</em>, <em>normalize=False</em>, <em>faster_mode=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.msm.MutualSubspaceMethod" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#cvt.models.base_class.MSMInterface" title="cvt.models.base_class.MSMInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">cvt.models.base_class.MSMInterface</span></code></a>, <a class="reference internal" href="#cvt.models.base_class.SMBase" title="cvt.models.base_class.SMBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">cvt.models.base_class.SMBase</span></code></a></p>
 <p>Mutual Subspace Method</p>
 </dd></dl>
@@ -417,7 +427,7 @@ component of a nested object.</p>
 <p>Subspace Method</p>
 <dl class="class">
 <dt id="cvt.models.sm.SubspaceMethod">
-<em class="property">class </em><code class="sig-prename descclassname">cvt.models.sm.</code><code class="sig-name descname">SubspaceMethod</code><span class="sig-paren">(</span><em class="sig-param">n_subdims</em>, <em class="sig-param">normalize=False</em>, <em class="sig-param">faster_mode=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.sm.SubspaceMethod" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">cvt.models.sm.</code><code class="descname">SubspaceMethod</code><span class="sig-paren">(</span><em>n_subdims</em>, <em>normalize=False</em>, <em>faster_mode=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.models.sm.SubspaceMethod" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#cvt.models.base_class.SMBase" title="cvt.models.base_class.SMBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">cvt.models.base_class.SMBase</span></code></a></p>
 <p>Mutual Subspace Method</p>
 </dd></dl>

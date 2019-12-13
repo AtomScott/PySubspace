@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>cvlab_toolbox &mdash; cvlab_toolbox 0.0 documentation</title>
+  <title>Getting Started &mdash; cvlab_toolbox 0.0 documentation</title>
   
 
   
@@ -22,11 +22,20 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -87,7 +96,8 @@
             
               <p class="caption"><span class="caption-text">Tutorials:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">cvlab_toolbox</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#install">Install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#coding-styles">Coding styles</a></li>
@@ -147,7 +157,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>cvlab_toolbox</li>
+      <li>Getting Started</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -166,13 +176,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="cvlab-toolbox">
-<h1>cvlab_toolbox<a class="headerlink" href="#cvlab-toolbox" title="Permalink to this headline">¶</a></h1>
-<p>This is the repository of CVLAB toolbox</p>
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This is the repository of <a class="reference external" href="https://en.home.cvlab.cs.tsukuba.ac.jp/">CVLAB</a> toolbox, which contains various subspace methods for classification.</p>
+</div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Scikit-learn API</p></li>
+<li>Scikit-learn API</li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">randint</span><span class="p">,</span> <span class="n">rand</span>
@@ -205,7 +218,7 @@
 <div class="section" id="install">
 <h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>pip</p></li>
+<li>pip</li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -U git+https://github.com/ComputerVisionLaboratory/cvlab_toolbox
 </pre></div>
@@ -214,13 +227,13 @@
 <div class="section" id="coding-styles">
 <h2>Coding styles<a class="headerlink" href="#coding-styles" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p>Follow <code class="docutils literal notranslate"><span class="pre">PEP8</span></code> as much as possible</p>
+<li><p class="first">Follow <code class="docutils literal notranslate"><span class="pre">PEP8</span></code> as much as possible</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">English</a></p></li>
-<li><p><a class="reference external" href="http://pep8-ja.readthedocs.io/ja/latest/">日本語</a></p></li>
+<li><a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">English</a></li>
+<li><a class="reference external" href="http://pep8-ja.readthedocs.io/ja/latest/">日本語</a></li>
 </ul>
 </li>
-<li><p>Write a description as <strong>docstring</strong></p>
+<li><p class="first">Write a description as <strong>docstring</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">PCA</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">whiten</span> <span class="o">=</span> <span class="bp">False</span><span class="p">):</span>
   <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    apply PCA</span>
@@ -253,9 +266,9 @@
 <div class="section" id="contribution-rules">
 <h2>Contribution rules<a class="headerlink" href="#contribution-rules" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li><p>Make a pull request</p></li>
-<li><p>Ask some lab members to review the code</p></li>
-<li><p>when all agreements are taken, ask any admin member to merge it</p></li>
+<li>Make a pull request</li>
+<li>Ask some lab members to review the code</li>
+<li>when all agreements are taken, ask any admin member to merge it</li>
 </ol>
 </div>
 </div>
