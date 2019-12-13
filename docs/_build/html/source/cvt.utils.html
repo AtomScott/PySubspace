@@ -22,20 +22,11 @@
   <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../',
-              VERSION:'0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -46,6 +37,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Coding styles" href="../contribution/contribution.html" />
     <link rel="prev" title="cvt.models package" href="cvt.models.html" /> 
 </head>
 
@@ -93,11 +85,11 @@
               
             
             
-              <p class="caption"><span class="caption-text">Tutorials:</span></p>
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/README.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/getting_started.html">Subspace Methods at a Glance</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples:</span></p>
+<p class="caption"><span class="caption-text">Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../examples/MNIST_with_SM.html">This is sample markdown file with a subspace classifier.</a></li>
 </ul>
@@ -119,6 +111,11 @@
 <li class="toctree-l2"><a class="reference internal" href="cvt.html#module-cvt">Module contents</a></li>
 </ul>
 </li>
+</ul>
+<p class="caption"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html">Coding styles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html#contribution-rules">Contribution rules</a></li>
 </ul>
 
             
@@ -195,73 +192,61 @@
 <p>Mathematical utilities</p>
 <dl class="function">
 <dt id="cvt.utils.base.canonical_angle">
-<code class="descclassname">cvt.utils.base.</code><code class="descname">canonical_angle</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.canonical_angle" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cvt.utils.base.</code><code class="sig-name descname">canonical_angle</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.canonical_angle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate cannonical angles beween subspaces</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>basis matrix</em><em>, </em><em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_subdim_X</em><em>, </em><em>n_dim</em><em>)</em>) – </li>
-<li><strong>Y</strong> (<em>basis matrix</em><em>, </em><em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_subdim_Y</em><em>, </em><em>n_dim</em><em>)</em>) – </li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>basis matrix</em><em>, </em><em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_subdim_X</em><em>, </em><em>n_dim</em><em>)</em>) – </p></li>
+<li><p><strong>Y</strong> (<em>basis matrix</em><em>, </em><em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_subdim_Y</em><em>, </em><em>n_dim</em><em>)</em>) – </p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>c</strong></p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float, similarity of X, Y</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>c</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float, similarity of X, Y</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="cvt.utils.base.canonical_angle_matrix">
-<code class="descclassname">cvt.utils.base.</code><code class="descname">canonical_angle_matrix</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.canonical_angle_matrix" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cvt.utils.base.</code><code class="sig-name descname">canonical_angle_matrix</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.canonical_angle_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate canonical angles between subspaces
 example     similarity = MathUtils.calc_basis_vector(X, Y)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>X</strong> (<em>set of basis matrix</em><em>, </em><em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_set_X</em><em>, </em><em>n_subdim</em><em>, </em><em>n_dim</em><em>)</em>) – n_subdim can be variable on each subspaces</li>
-<li><strong>Y</strong> (<em>set of basis matrix</em><em>, </em><em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_set_Y</em><em>, </em><em>n_subdim</em><em>, </em><em>n_dim</em><em>)</em>) – n_set can be variable from n_set of X
-n_subdim can be variable on each subspaces</li>
-<li><strong>Returns</strong> – C: similarity matrix, array-like, shape: (n_set_X, n_set_Y)</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>set of basis matrix</em><em>, </em><em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_set_X</em><em>, </em><em>n_subdim</em><em>, </em><em>n_dim</em><em>)</em>) – n_subdim can be variable on each subspaces</p></li>
+<li><p><strong>Y</strong> (<em>set of basis matrix</em><em>, </em><em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_set_Y</em><em>, </em><em>n_subdim</em><em>, </em><em>n_dim</em><em>)</em>) – n_set can be variable from n_set of X
+n_subdim can be variable on each subspaces</p></li>
+<li><p><strong>Returns</strong> – C: similarity matrix, array-like, shape: (n_set_X, n_set_Y)</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="cvt.utils.base.canonical_angle_matrix_f">
-<code class="descclassname">cvt.utils.base.</code><code class="descname">canonical_angle_matrix_f</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.canonical_angle_matrix_f" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cvt.utils.base.</code><code class="sig-name descname">canonical_angle_matrix_f</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.canonical_angle_matrix_f" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate canonical angles between subspaces
 example     similarity = MathUtils.calc_basis_vector(X, Y)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>X</strong> (<em>set of basis matrix</em><em>, </em><em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_set_X</em><em>, </em><em>n_subdim</em><em>, </em><em>n_dim</em><em>)</em>) – n_subdim can be variable on each subspaces</li>
-<li><strong>Y</strong> (<em>set of basis matrix</em><em>, </em><em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_set_Y</em><em>, </em><em>n_subdim</em><em>, </em><em>n_dim</em><em>)</em>) – n_set can be variable from n_set of X
-n_subdim can be variable on each subspaces</li>
-<li><strong>Returns</strong> – C: similarity matrix, array-like, shape: (n_set_X, n_set_Y)</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>set of basis matrix</em><em>, </em><em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_set_X</em><em>, </em><em>n_subdim</em><em>, </em><em>n_dim</em><em>)</em>) – n_subdim can be variable on each subspaces</p></li>
+<li><p><strong>Y</strong> (<em>set of basis matrix</em><em>, </em><em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_set_Y</em><em>, </em><em>n_subdim</em><em>, </em><em>n_dim</em><em>)</em>) – n_set can be variable from n_set of X
+n_subdim can be variable on each subspaces</p></li>
+<li><p><strong>Returns</strong> – C: similarity matrix, array-like, shape: (n_set_X, n_set_Y)</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="cvt.utils.base.cross_similarities">
-<code class="descclassname">cvt.utils.base.</code><code class="descname">cross_similarities</code><span class="sig-paren">(</span><em>refs</em>, <em>inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.cross_similarities" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cvt.utils.base.</code><code class="sig-name descname">cross_similarities</code><span class="sig-paren">(</span><em class="sig-param">refs</em>, <em class="sig-param">inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.cross_similarities" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calc similarities between each reference spaces and each input subspaces</p>
 <p>refs: list of array-like (n_dims, n_subdims_i)
 inputs: list of array-like (n_dims, n_subdims_j)</p>
@@ -270,36 +255,35 @@ inputs: list of array-like (n_dims, n_subdims_j)</p>
 
 <dl class="function">
 <dt id="cvt.utils.base.dual_vectors">
-<code class="descclassname">cvt.utils.base.</code><code class="descname">dual_vectors</code><span class="sig-paren">(</span><em>K</em>, <em>n_subdims=None</em>, <em>higher=True</em>, <em>eps=1e-06</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.dual_vectors" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cvt.utils.base.</code><code class="sig-name descname">dual_vectors</code><span class="sig-paren">(</span><em class="sig-param">K</em>, <em class="sig-param">n_subdims=None</em>, <em class="sig-param">higher=True</em>, <em class="sig-param">eps=1e-06</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.dual_vectors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calc dual representation of vectors in kernel space</p>
-<dl class="docutils">
-<dt>K <span class="classifier-delimiter">:</span> <span class="classifier">array-like, shape: (n_samples, n_samples)</span></dt>
-<dd>Grammian Matrix of X: K(X, X)</dd>
-<dt>n_subdims: int, default=None</dt>
-<dd>Number of vectors of dual vectors to return</dd>
-<dt>higher: boolean, default=None</dt>
-<dd><dl class="first last docutils">
-<dt>If True, this function returns eigenbasis corresponding to</dt>
-<dd>higher <cite>n_subdims</cite> eigenvalues in descending order.</dd>
-<dt>If False, this function returns eigenbasis corresponding to</dt>
-<dd>lower <cite>n_subdims</cite> eigenvalues in descending order.</dd>
+<dl class="simple">
+<dt>K<span class="classifier">array-like, shape: (n_samples, n_samples)</span></dt><dd><p>Grammian Matrix of X: K(X, X)</p>
+</dd>
+<dt>n_subdims: int, default=None</dt><dd><p>Number of vectors of dual vectors to return</p>
+</dd>
+<dt>higher: boolean, default=None</dt><dd><dl class="simple">
+<dt>If True, this function returns eigenbasis corresponding to</dt><dd><p>higher <cite>n_subdims</cite> eigenvalues in descending order.</p>
+</dd>
+<dt>If False, this function returns eigenbasis corresponding to</dt><dd><p>lower <cite>n_subdims</cite> eigenvalues in descending order.</p>
+</dd>
 </dl>
 </dd>
-<dt>eps: float, default=1e-20</dt>
-<dd>lower limit of eigenvalues</dd>
+<dt>eps: float, default=1e-20</dt><dd><p>lower limit of eigenvalues</p>
+</dd>
 </dl>
-<dl class="docutils">
-<dt>A <span class="classifier-delimiter">:</span> <span class="classifier">array-like, shape: (n_samples, n_samples)</span></dt>
-<dd>Dual replesentation vectors.
-it satisfies lambda[i] * A[i] &#64; A[i] == 1, where lambda[i] is i-th biggest eigenvalue</dd>
-<dt>e:  array-like, shape: (n_samples, )</dt>
-<dd>Eigen values descending sorted</dd>
+<dl class="simple">
+<dt>A<span class="classifier">array-like, shape: (n_samples, n_samples)</span></dt><dd><p>Dual replesentation vectors.
+it satisfies lambda[i] * A[i] &#64; A[i] == 1, where lambda[i] is i-th biggest eigenvalue</p>
+</dd>
+<dt>e:  array-like, shape: (n_samples, )</dt><dd><p>Eigen values descending sorted</p>
+</dd>
 </dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="cvt.utils.base.max_square_singular_values">
-<code class="descclassname">cvt.utils.base.</code><code class="descname">max_square_singular_values</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.max_square_singular_values" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cvt.utils.base.</code><code class="sig-name descname">max_square_singular_values</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.max_square_singular_values" title="Permalink to this definition">¶</a></dt>
 <dd><p>calculate mean square of singular values of X</p>
 <p>X : array-like, shape: (n, m)</p>
 <p>c: mean square of singular values</p>
@@ -307,7 +291,7 @@ it satisfies lambda[i] * A[i] &#64; A[i] == 1, where lambda[i] is i-th biggest e
 
 <dl class="function">
 <dt id="cvt.utils.base.mean_square_singular_values">
-<code class="descclassname">cvt.utils.base.</code><code class="descname">mean_square_singular_values</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.mean_square_singular_values" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cvt.utils.base.</code><code class="sig-name descname">mean_square_singular_values</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.mean_square_singular_values" title="Permalink to this definition">¶</a></dt>
 <dd><p>calculate mean square of singular values of X</p>
 <p>X : array-like, shape: (n, m)</p>
 <p>c: mean square of singular values</p>
@@ -315,30 +299,26 @@ it satisfies lambda[i] * A[i] &#64; A[i] == 1, where lambda[i] is i-th biggest e
 
 <dl class="function">
 <dt id="cvt.utils.base.subspace_bases">
-<code class="descclassname">cvt.utils.base.</code><code class="descname">subspace_bases</code><span class="sig-paren">(</span><em>X</em>, <em>n_subdims=None</em>, <em>higher=True</em>, <em>return_eigvals=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.subspace_bases" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cvt.utils.base.</code><code class="sig-name descname">subspace_bases</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">n_subdims=None</em>, <em class="sig-param">higher=True</em>, <em class="sig-param">return_eigvals=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.subspace_bases" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return subspace basis using PCA</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_dimensions</em><em>, </em><em>n_vectors</em><em>)</em>) – data matrix</li>
-<li><strong>n_subdims</strong> (<em>integer</em>) – number of subspace dimension</li>
-<li><strong>higher</strong> (<em>bool</em>) – if True, this function returns eigenvectors collesponding
-top-<cite>n_subdims</cite> eigenvalues. default is True.</li>
-<li><strong>return_eigvals</strong> (<em>bool</em>) – if True, this function also returns eigenvalues.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_dimensions</em><em>, </em><em>n_vectors</em><em>)</em>) – data matrix</p></li>
+<li><p><strong>n_subdims</strong> (<em>integer</em>) – number of subspace dimension</p></li>
+<li><p><strong>higher</strong> (<em>bool</em>) – if True, this function returns eigenvectors collesponding
+top-<cite>n_subdims</cite> eigenvalues. default is True.</p></li>
+<li><p><strong>return_eigvals</strong> (<em>bool</em>) – if True, this function also returns eigenvalues.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
-<li><strong>V</strong> (<em>array-like, shape (n_dimensions, n_subdims)</em>) – bases matrix</li>
-<li><strong>w</strong> (<em>array-like shape (n_subdims)</em>) – eigenvalues</li>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>V</strong> (<em>array-like, shape (n_dimensions, n_subdims)</em>) – bases matrix</p></li>
+<li><p><strong>w</strong> (<em>array-like shape (n_subdims)</em>) – eigenvalues</p></li>
 </ul>
 </p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -346,58 +326,50 @@ top-<cite>n_subdims</cite> eigenvalues. default is True.</li>
 <span id="cvt-utils-evaluation-module"></span><h2>cvt.utils.evaluation module<a class="headerlink" href="#module-cvt.utils.evaluation" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="cvt.utils.evaluation.calc_eer">
-<code class="descclassname">cvt.utils.evaluation.</code><code class="descname">calc_eer</code><span class="sig-paren">(</span><em>X</em>, <em>labels=None</em>, <em>data_type='S'</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.evaluation.calc_eer" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cvt.utils.evaluation.</code><code class="sig-name descname">calc_eer</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">labels=None</em>, <em class="sig-param">data_type='S'</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.evaluation.calc_eer" title="Permalink to this definition">¶</a></dt>
 <dd><p>calculate Error Rate (ER)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_elements</em><em>)</em>) – data matrix</li>
-<li><strong>labels</strong><strong>(</strong><strong>optional</strong><strong>)</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_elements</em><em>)</em>) – labels that represents what class each element(row) belongs to
-if it’s not given, each rows are treated as independent class</li>
-<li><strong>data_type</strong><strong>(</strong><strong>optional</strong><strong>)</strong> (<em>string</em>) – ‘S’: Similarity (default)
-‘D’: Distance</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_elements</em><em>)</em>) – data matrix</p></li>
+<li><p><strong>labels</strong><strong>(</strong><strong>optional</strong><strong>)</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_elements</em><em>)</em>) – labels that represents what class each element(row) belongs to
+if it’s not given, each rows are treated as independent class</p></li>
+<li><p><strong>data_type</strong><strong>(</strong><strong>optional</strong><strong>)</strong> (<em>string</em>) – ‘S’: Similarity (default)
+‘D’: Distance</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
-<li><strong>eer</strong> (<em>float</em>) – equal error rate</li>
-<li><strong>thresh</strong> (<em>float</em>) – threashold</li>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>eer</strong> (<em>float</em>) – equal error rate</p></li>
+<li><p><strong>thresh</strong> (<em>float</em>) – threashold</p></li>
 </ul>
 </p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="cvt.utils.evaluation.calc_er">
-<code class="descclassname">cvt.utils.evaluation.</code><code class="descname">calc_er</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>labels=None</em>, <em>data_type='S'</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.evaluation.calc_er" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cvt.utils.evaluation.</code><code class="sig-name descname">calc_er</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">labels=None</em>, <em class="sig-param">data_type='S'</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.evaluation.calc_er" title="Permalink to this definition">¶</a></dt>
 <dd><p>calculate Error Rate (ER)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_elements</em><em>)</em>) – data matrix</li>
-<li><strong>y</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>)</em>) – true label (integer)</li>
-<li><strong>labels</strong><strong>(</strong><strong>optional</strong><strong>)</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_elements</em><em>)</em>) – labels that represents what class each element(row) belongs to
-if it’s not given, each rows are treated as independent class</li>
-<li><strong>data_type</strong><strong>(</strong><strong>optional</strong><strong>)</strong> (<em>string</em>) – ‘S’: Similarity (default)
-‘D’: Distance</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_elements</em><em>)</em>) – data matrix</p></li>
+<li><p><strong>y</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>)</em>) – true label (integer)</p></li>
+<li><p><strong>labels</strong><strong>(</strong><strong>optional</strong><strong>)</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_elements</em><em>)</em>) – labels that represents what class each element(row) belongs to
+if it’s not given, each rows are treated as independent class</p></li>
+<li><p><strong>data_type</strong><strong>(</strong><strong>optional</strong><strong>)</strong> (<em>string</em>) – ‘S’: Similarity (default)
+‘D’: Distance</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>er</strong> – error rate</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>er</strong> – error rate</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -406,52 +378,44 @@ if it’s not given, each rows are treated as independent class</li>
 <p>Kernel functions</p>
 <dl class="function">
 <dt id="cvt.utils.kernel_functions.l2_kernel">
-<code class="descclassname">cvt.utils.kernel_functions.</code><code class="descname">l2_kernel</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.kernel_functions.l2_kernel" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cvt.utils.kernel_functions.</code><code class="sig-name descname">l2_kernel</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.kernel_functions.l2_kernel" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="cvt.utils.kernel_functions.linear_kernel">
-<code class="descclassname">cvt.utils.kernel_functions.</code><code class="descname">linear_kernel</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.kernel_functions.linear_kernel" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cvt.utils.kernel_functions.</code><code class="sig-name descname">linear_kernel</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.kernel_functions.linear_kernel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Linear kernel. this calculates simple inner product.
 K(x, y) = x &#64; y</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>X</strong> (<em>array of shape</em><em> (</em><em>n_dims</em><em>, </em><em>n_samples_X</em><em>)</em>) – </li>
-<li><strong>Y</strong> (<em>array of shape</em><em> (</em><em>n_dims</em><em>, </em><em>n_samples_Y</em><em>)</em>) – </li>
-<li><strong>Returns</strong> – </li>
-<li><strong>--------</strong> – </li>
-<li><strong>K</strong> (<em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_samples_X</em><em>, </em><em>n_samples_Y</em><em>)</em>) – Grammian matrix</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array of shape</em><em> (</em><em>n_dims</em><em>, </em><em>n_samples_X</em><em>)</em>) – </p></li>
+<li><p><strong>Y</strong> (<em>array of shape</em><em> (</em><em>n_dims</em><em>, </em><em>n_samples_Y</em><em>)</em>) – </p></li>
+<li><p><strong>Returns</strong> – </p></li>
+<li><p><strong>--------</strong> – </p></li>
+<li><p><strong>K</strong> (<em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_samples_X</em><em>, </em><em>n_samples_Y</em><em>)</em>) – Grammian matrix</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="cvt.utils.kernel_functions.rbf_kernel">
-<code class="descclassname">cvt.utils.kernel_functions.</code><code class="descname">rbf_kernel</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em>, <em>sigma=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.kernel_functions.rbf_kernel" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">cvt.utils.kernel_functions.</code><code class="sig-name descname">rbf_kernel</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em>, <em class="sig-param">sigma=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.kernel_functions.rbf_kernel" title="Permalink to this definition">¶</a></dt>
 <dd><p>RBF kernel. this is a wrapper of sklearn.metrics.pairwise.rbf_kernel.
 K(x, y) = exp(- (1/2) * (||x - y||/sigma)^2)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>X</strong> (<em>array of shape</em><em> (</em><em>n_dims</em><em>, </em><em>n_samples_X</em><em>)</em>) – </li>
-<li><strong>Y</strong> (<em>array of shape</em><em> (</em><em>n_dims</em><em>, </em><em>n_samples_Y</em><em>)</em>) – </li>
-<li><strong>sigma</strong> (<em>float</em><em>, </em><em>default None</em>) – If None, defaults to sqrt(n_dims / 2)</li>
-<li><strong>Returns</strong> – </li>
-<li><strong>--------</strong> – </li>
-<li><strong>K</strong> (<em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_samples_X</em><em>, </em><em>n_samples_Y</em><em>)</em>) – Grammian matrix</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array of shape</em><em> (</em><em>n_dims</em><em>, </em><em>n_samples_X</em><em>)</em>) – </p></li>
+<li><p><strong>Y</strong> (<em>array of shape</em><em> (</em><em>n_dims</em><em>, </em><em>n_samples_Y</em><em>)</em>) – </p></li>
+<li><p><strong>sigma</strong> (<em>float</em><em>, </em><em>default None</em>) – If None, defaults to sqrt(n_dims / 2)</p></li>
+<li><p><strong>Returns</strong> – </p></li>
+<li><p><strong>--------</strong> – </p></li>
+<li><p><strong>K</strong> (<em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_samples_X</em><em>, </em><em>n_samples_Y</em><em>)</em>) – Grammian matrix</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -467,6 +431,8 @@ K(x, y) = exp(- (1/2) * (||x - y||/sigma)^2)</p>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../contribution/contribution.html" class="btn btn-neutral float-right" title="Coding styles" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="cvt.models.html" class="btn btn-neutral float-left" title="cvt.models package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
