@@ -68,7 +68,7 @@ We use a Scikit-learn API so it should be pretty easy to get your code up and ru
    :maxdepth: 2
    :caption: Examples
 
-   ./examples/MNIST_example_with_SM
+   ./examples/index
 
 .. toctree::
     :maxdepth: 4
@@ -81,6 +81,12 @@ We use a Scikit-learn API so it should be pretty easy to get your code up and ru
     :caption: Contribution
 
     ./contribution/contribution
+
+.. toctree::
+    :maxdepth: 2
+    :caption: Gallery
+
+    ./examples_scripts/index
 
 Indices and tables
 ==================

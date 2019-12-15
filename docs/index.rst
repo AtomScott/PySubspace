@@ -82,6 +82,12 @@ We use a Scikit-learn API so it should be pretty easy to get your code up and ru
 
     ./contribution/contribution
 
+.. toctree::
+    :maxdepth: 2
+    :caption: Gallery
+
+    ./examples_scripts/index
+
 Indices and tables
 ==================
 

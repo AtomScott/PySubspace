@@ -35,7 +35,8 @@ extensions = [
     'sphinx.ext.napoleon',
     'recommonmark',
     'sphinx.ext.autodoc',
-    'sphinxcontrib.bibtex'
+    'sphinxcontrib.bibtex',
+    'sphinx_gallery.gen_gallery'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -77,3 +78,12 @@ html_theme_options = {
 
 html_favicon = '_static/logo.png'
 html_logo = '_static/logo.png'
+
+
+# The following configuration declares the location of the 
+# ‘examples’ directory ('example_dirs') to be ../examples 
+# and the ‘output’ directory ('gallery_dirs') to be auto_examples:
+sphinx_gallery_conf = {
+     'examples_dirs': '../examples',   # path to your example scripts
+     'gallery_dirs': 'examples_scripts',  # path to where to save gallery generated output
+}

@@ -27,6 +27,7 @@
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -35,6 +36,7 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Mutal Subspace Method" href="MSM.html" />
@@ -89,11 +91,19 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Subspace Methods at a Glance</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Concepts Walkthrough</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Subspace Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PCA.html">Principle Component Analysis</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Subspace Method</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#theory">Theory</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="MSM.html">Mutal Subspace Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="CMSM.html">Constrained Subspace Method</a></li>
 </ul>
 </li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Tutorials</a></li>
 </ul>
 <p class="caption"><span class="caption-text">API reference</span></p>
 <ul>
@@ -171,6 +181,17 @@
             
   <div class="section" id="subspace-method">
 <h1>Subspace Method<a class="headerlink" href="#subspace-method" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="theory">
+<h2>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h2>
+<p>The Subspace method Assume an input vector p and k class subspaces in f- dimensional vector space. The similarity S of the pattern vector p to the i-th class is defined based on either of the length of the projected input vector pˆ on the i-th reference subspace [3] or the minimum angle [4] between the input vector p and the i-th class subspace as shown in Fig.1(a).</p>
+<p>The length of an input vector p is often normalized to 1.0. In this case these two criteria coincide. In the following explanation, therefore, the angle-based similarity S defined by the following equation will be used:</p>
+<p>S = cos2θ = ∑dq (p · ϕi)2 i=1 ||p||2, (1)</p>
+<p>where dq is the dimension of the class subspace, and ϕi is the i-th f-dimensional orthogonal normal basis vector of the class subspace, which are obtained from applying the principal component analysis (PCA) to a set of patterns of the class. Concretely, these orthonormal basis vectors can be obtained as the eigenvectors of the correlation matrix
+i=1 xix⊤ of the class.</p>
+<p>Process flow of the SM The whole process of the SM consists of a learning phase and a recognition phase.
+In the learning phase All k class dq-dimensional subspaces are generated from a set of pattern vectors of each class by using PCA.
+In the recognition phase The similarities S of an input vector p to all the k class subspaces are calculated by using Equation (1). Then, the input vector is classified into the class of the class subspace with highest similarity. If the highest similarity is lower than a threshold value fixed in advance, the input vector is classified into a reject class</p>
+</div>
 </div>
 
 
