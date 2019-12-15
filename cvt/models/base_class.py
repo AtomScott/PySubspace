@@ -93,6 +93,9 @@ class SMBase(BaseEstimator, ClassifierMixin):
 
         y: integer array, (n_classes)
             Class labels of training vectors. 
+            e.g.
+                y =  np.unique(labels).astype(int)
+                y = range(len(X))
         """
 
         # preprocessing data matricies
@@ -139,7 +142,7 @@ class SMBase(BaseEstimator, ClassifierMixin):
         salt = 1e-3
         assert proba.min() > 0.0 - salt, 'some probabilities are smaller than 0! min value is {}'.format(proba.min())
         assert proba.max() < 1.0 + salt, 'some probabilities are bigger than 1! max value is {}'.format(proba.max())
-        proba = np.clip(proba, 0, 1)
+        proba = np.clip(proba, 0, 1) # @ajs 上のおかげでひっかかることなくね？
         return self.proba2class(proba)
 
     def proba2class(self, proba):
