@@ -8,12 +8,15 @@
 
 
 PCA by minimizing the Quadratic Discriminant Function
-====================================================================
+=====================================================
 
 This example plots an animated gif showing how we can perform principle 
 component analysis (PCA) by minimizing the Quadratic Discriminant Function.
 
 
+
+.. image:: /examples_scripts/images/sphx_glr_plot_pca_001.png
+    :class: sphx-glr-single-img
 
 
 
@@ -23,27 +26,25 @@ component analysis (PCA) by minimizing the Quadratic Discriminant Function.
 .. code-block:: default
 
 
-    from scipy import linalg
-    import numpy as np
-    import matplotlib.pyplot as plt
     import matplotlib as mpl
-    from matplotlib import colors
+    import matplotlib.animation as animation
+    import matplotlib.pyplot as plt
+    import numpy as np
+
     from matplotlib.animation import FuncAnimation
+    from scipy.constants import golden as g
+
 
     def dataset_fixed_cov():
         '''Generate 1 Gaussians samples with the same covariance matrix'''
-        n, dim = 300, 2
+        n, dim = 6000, 2
         np.random.seed(0)
-        C = np.array([[0., -0.23], [0.83, .23]])
+        C = np.array([[0., -0.1], [0.9, .1]])
         X = np.dot(np.random.randn(n, dim), C) + [2., 2.]
         return X
 
-    def calc_J(X, vec):
-        j = 0
-        m = X.mean(axis=0)
-        for v in X:
-            j += (v-m).T @ vec
-        return j
+    def proj_variance(X, vec):
+        return np.var(X @ vec.T)
 
     def normalize(vec):
         return vec / np.linalg.norm(vec)
@@ -51,55 +52,79 @@ component analysis (PCA) by minimizing the Quadratic Discriminant Function.
     def is_normalized(vec):
         return np.linalg.norm(vec) == 1.
 
-    def make_vector(deg):
-        return np.array([np.cos(np.deg2rad(deg)), np.sin(np.deg2rad(deg))])
+    def unit_vector_from_rad(rad):
+        return np.array([np.cos(rad), np.sin(rad)])
 
+    # Generate dataset
+    X = dataset_fixed_cov()
 
-    if __name__ == "__maian__":
-        # Generate dataset
-        X = dataset_fixed_cov()
+    # Calculate the direction that maximises the variance
+    # with eigen decomposition
+    eig_vals, eig_vecs = np.linalg.eig(np.cov((X - X.mean(axis=0)).T))
+    target_phi = [vec for val, vec in sorted(zip(eig_vals, eig_vecs.T), reverse=True)][0]
 
-        # Calculate a bad estimation of phi
-        phi = make_vector(-45)
-        assert is_normalized(phi)
+    # calculate the angle of the target phi
+    target_rad = np.angle(target_phi[0]+target_phi[1]*1j)
 
-        # Calculate the direction that maximises the variance
-        # with eigen decomposition
-        eig_vals, eig_vecs = np.linalg.eig(X.T@X + X.mean())
-        target_phi = eig_vecs[0]
-        assert is_normalized(target_phi)
-    
-        fig, ax = plt.subplots()
-        J = calc_J(X, phi)
-        ln, = ax.quiver(*[0,0], *phi.T, scale=2)
+    # Predefine the number of time steps
+    N = 300
+    # Create N steps to "solve" for target
+    rads = np.random.normal(loc=0, scale=np.pi, size=N) * np.geomspace(1, 2**-16, num=N) + target_rad
 
-        def init():
-            # Plot direction of Variance
-            ax.quiver(*[0,0], *phi.T, scale=2)
-            # Plot datset
-            ax.scatter(*X.T, c='blue', label='Target dataset')
-            # Plot mean
-            ax.scatter(*X.mean(axis=0), c='red', label='Mean')
-            # Plot origin
-            ax.scatter(*[0,0], c='black', label='Origin')
-            plt.legend()
-            plt.title(f'J={J}')
-            return ln,
+    plt.style.use('seaborn-dark')
+    fig, (ax1, ax2) = plt.subplots(nrows=1, ncols=2, figsize=(g*6, 3))
 
-        def update(frame):
-            if frame % 2 ==0:
-                ln.set_data(*target_phi)
-            else:
-                ln.set_data(*phi)
-            return ln,    
+    # Plot the scatters that persists (isn't redrawnstart_deg) 
+    ax1.scatter(*X.T, c='blue', label='Target dataset') # Dataset
+    ax1.scatter(*X.mean(axis=0), c='red', label='Mean') # Mean 
+    ax1.scatter(*[0,0], c='black', label='Origin') # Origin
+    ax1.quiver(*[0,0], *target_phi, angles='xy',scale_units='xy', scale=0.3, linestyle='--', alpha=0.6)
+    # and init the quiver.
+    Q = ax1.quiver(*[0,0,0,0], angles='xy',scale_units='xy', scale=0.3)
 
-        ani = FuncAnimation(fig, update, frames=np.linspace(0, 2*np.pi, 128),
-                        init_func=init, blit=True)
-        plt.show()
+    x_data, y_data = [], []
+    vl = ax2.axvline(0, 0, 1, linestyle='--', color='black', alpha=0.6)
+    hl = ax2.axhline(0, 0, 1, linestyle='--', color='black', alpha=0.6)
+    ln, = ax2.plot(x_data, y_data,  'r.', alpha=0.2)
+    ax2.set_xlim(target_rad-np.pi/2, target_rad+np.pi/2)
+    ax2.set_ylim(0, 1)
+
+    plots = [ln, Q, vl, hl]
+
+    def update_quiver(num, Q, phi, var):
+        fig.suptitle(f'J = {var:0.4f} @ step {num}')
+        Q.set_UVC(*phi)
+        return Q
+
+    def update_scatter(num, ln, var, vl, hl):
+        global x_data
+        global y_data 
+        x_data += [num]
+        y_data += [var]
+        ln.set_data(x_data, y_data)
+        vl.set_data(num, [0, 2])
+        hl.set_data([0, 2], var)
+        return ln, vl, hl
+
+    def update(num, ln, Q, vl, hl):
+        phi = unit_vector_from_rad(rads[num])
+        var = proj_variance(X, phi)
+        # ln, Q = lnQ
+        Q = update_quiver(num, Q, phi, var)
+        ln, vl, hl = update_scatter(rads[num], ln, var, vl, hl)
+        return [ln, Q, vl, hl],
+            
+
+    ani = FuncAnimation(fig, update, fargs=(plots), frames=range(1,N),
+        interval=20, blit=False)
+
+    # plt.show()
+    ani.save('../docs/_static/pca.gif',  writer='imagemagick', fps=60)
+
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.021 seconds)
+   **Total running time of the script:** ( 1 minutes  3.760 seconds)
 
 
 .. _sphx_glr_download_examples_scripts_plot_pca.py:

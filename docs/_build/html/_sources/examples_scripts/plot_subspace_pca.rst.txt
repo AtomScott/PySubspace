@@ -1,21 +1,20 @@
 .. note::
     :class: sphx-glr-download-link-note
 
-    Click :ref:`here <sphx_glr_download_examples_scripts_plot_pca.py>` to download the full example code
+    Click :ref:`here <sphx_glr_download_examples_scripts_plot_subspace_pca.py>` to download the full example code
 .. rst-class:: sphx-glr-example-title
 
-.. _sphx_glr_examples_scripts_plot_pca.py:
+.. _sphx_glr_examples_scripts_plot_subspace_pca.py:
 
 
-PCA by minimizing the Quadratic Discriminant Function
-=====================================================
+Subspace PCA (PCA without mean centering)
+=========================================
 
-This example plots an animated gif showing how we can perform principle 
-component analysis (PCA) by minimizing the Quadratic Discriminant Function.
-
+This example plots an animated gif showing how we can perform principle component analysis (PCA) without mean centering and obtain the same eigen vector.
 
 
-.. image:: /examples_scripts/images/sphx_glr_plot_pca_001.png
+
+.. image:: /examples_scripts/images/sphx_glr_plot_subspace_pca_001.png
     :class: sphx-glr-single-img
 
 
@@ -60,7 +59,7 @@ component analysis (PCA) by minimizing the Quadratic Discriminant Function.
 
     # Calculate the direction that maximises the variance
     # with eigen decomposition
-    eig_vals, eig_vecs = np.linalg.eig(np.cov((X - X.mean(axis=0)).T))
+    eig_vals, eig_vecs = np.linalg.eig(np.cov((X).T))
     target_phi = [vec for val, vec in sorted(zip(eig_vals, eig_vecs.T), reverse=True)][0]
 
     # calculate the angle of the target phi
@@ -119,15 +118,15 @@ component analysis (PCA) by minimizing the Quadratic Discriminant Function.
         interval=20, blit=False)
 
     # plt.show()
-    ani.save('../docs/_static/pca.gif',  writer='imagemagick', fps=60)
+    ani.save('../docs/_static/subspace_pca.gif',  writer='imagemagick', fps=60)
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  3.760 seconds)
+   **Total running time of the script:** ( 1 minutes  2.478 seconds)
 
 
-.. _sphx_glr_download_examples_scripts_plot_pca.py:
+.. _sphx_glr_download_examples_scripts_plot_subspace_pca.py:
 
 
 .. only :: html
@@ -139,13 +138,13 @@ component analysis (PCA) by minimizing the Quadratic Discriminant Function.
 
   .. container:: sphx-glr-download
 
-     :download:`Download Python source code: plot_pca.py <plot_pca.py>`
+     :download:`Download Python source code: plot_subspace_pca.py <plot_subspace_pca.py>`
 
 
 
   .. container:: sphx-glr-download
 
-     :download:`Download Jupyter notebook: plot_pca.ipynb <plot_pca.ipynb>`
+     :download:`Download Jupyter notebook: plot_subspace_pca.ipynb <plot_subspace_pca.ipynb>`
 
 
 .. only:: html

@@ -51,6 +51,8 @@ Usually, the principal components are determined as vectors which start from the
 
 However, such mean centering is not used in the Subspace Method. The Subspace Method's PCA is different from usual PCA at this point.
 
+.. figure:: ../_static/pca/subspace_pca.gif
+    :align: center
 
 
 References

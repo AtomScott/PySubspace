@@ -1,9 +1,8 @@
 """
-PCA by minimizing the Quadratic Discriminant Function
-=====================================================
+Subspace PCA (PCA without mean centering)
+=========================================
 
-This example plots an animated gif showing how we can perform principle 
-component analysis (PCA) by minimizing the Quadratic Discriminant Function.
+This example plots an animated gif showing how we can perform principle component analysis (PCA) without mean centering and obtain the same eigen vector.
 
 
 """
@@ -42,7 +41,7 @@ X = dataset_fixed_cov()
 
 # Calculate the direction that maximises the variance
 # with eigen decomposition
-eig_vals, eig_vecs = np.linalg.eig(np.cov((X - X.mean(axis=0)).T))
+eig_vals, eig_vecs = np.linalg.eig(np.cov((X).T))
 target_phi = [vec for val, vec in sorted(zip(eig_vals, eig_vecs.T), reverse=True)][0]
 
 # calculate the angle of the target phi
@@ -101,4 +100,4 @@ ani = FuncAnimation(fig, update, fargs=(plots), frames=range(1,N),
     interval=20, blit=False)
 
 # plt.show()
-ani.save('../docs/_static/pca.gif',  writer='imagemagick', fps=60)
+ani.save('../docs/_static/subspace_pca.gif',  writer='imagemagick', fps=60)

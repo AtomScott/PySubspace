@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PCA by minimizing the Quadratic Discriminant Function &mdash; cvlab_toolbox 0.0 documentation</title>
+  <title>Subspace PCA (PCA without mean centering) &mdash; cvlab_toolbox 0.0 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
   <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Linear and Quadratic Discriminant Analysis with covariance ellipsoid" href="plot_test.html" />
-    <link rel="prev" title="Subspace PCA (PCA without mean centering)" href="plot_subspace_pca.html" /> 
+    <link rel="next" title="PCA by minimizing the Quadratic Discriminant Function" href="plot_pca.html" />
+    <link rel="prev" title="Gallery" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -108,8 +108,8 @@
 <p class="caption"><span class="caption-text">Gallery</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Gallery</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="plot_subspace_pca.html">Subspace PCA (PCA without mean centering)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">PCA by minimizing the Quadratic Discriminant Function</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Subspace PCA (PCA without mean centering)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_pca.html">PCA by minimizing the Quadratic Discriminant Function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_test.html">Linear and Quadratic Discriminant Analysis with covariance ellipsoid</a></li>
 </ul>
 </li>
@@ -160,13 +160,13 @@
         
           <li><a href="index.html">Gallery</a> &raquo;</li>
         
-      <li>PCA by minimizing the Quadratic Discriminant Function</li>
+      <li>Subspace PCA (PCA without mean centering)</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/examples_scripts/plot_pca.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/examples_scripts/plot_subspace_pca.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -181,13 +181,12 @@
             
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-examples-scripts-plot-pca-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-examples-scripts-plot-subspace-pca-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
-<div class="sphx-glr-example-title section" id="pca-by-minimizing-the-quadratic-discriminant-function">
-<span id="sphx-glr-examples-scripts-plot-pca-py"></span><h1>PCA by minimizing the Quadratic Discriminant Function<a class="headerlink" href="#pca-by-minimizing-the-quadratic-discriminant-function" title="Permalink to this headline">¶</a></h1>
-<p>This example plots an animated gif showing how we can perform principle
-component analysis (PCA) by minimizing the Quadratic Discriminant Function.</p>
-<img alt="../_images/sphx_glr_plot_pca_001.png" class="sphx-glr-single-img" src="../_images/sphx_glr_plot_pca_001.png" />
+<div class="sphx-glr-example-title section" id="subspace-pca-pca-without-mean-centering">
+<span id="sphx-glr-examples-scripts-plot-subspace-pca-py"></span><h1>Subspace PCA (PCA without mean centering)<a class="headerlink" href="#subspace-pca-pca-without-mean-centering" title="Permalink to this headline">¶</a></h1>
+<p>This example plots an animated gif showing how we can perform principle component analysis (PCA) without mean centering and obtain the same eigen vector.</p>
+<img alt="../_images/sphx_glr_plot_subspace_pca_001.png" class="sphx-glr-single-img" src="../_images/sphx_glr_plot_subspace_pca_001.png" />
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">import</span> <span class="nn">matplotlib.animation</span> <span class="k">as</span> <span class="nn">animation</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -222,7 +221,7 @@ component analysis (PCA) by minimizing the Quadratic Discriminant Function.</p>
 
 <span class="c1"># Calculate the direction that maximises the variance</span>
 <span class="c1"># with eigen decomposition</span>
-<span class="n">eig_vals</span><span class="p">,</span> <span class="n">eig_vecs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">((</span><span class="n">X</span> <span class="o">-</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
+<span class="n">eig_vals</span><span class="p">,</span> <span class="n">eig_vecs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">((</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
 <span class="n">target_phi</span> <span class="o">=</span> <span class="p">[</span><span class="n">vec</span> <span class="k">for</span> <span class="n">val</span><span class="p">,</span> <span class="n">vec</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">eig_vals</span><span class="p">,</span> <span class="n">eig_vecs</span><span class="o">.</span><span class="n">T</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)][</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="c1"># calculate the angle of the target phi</span>
@@ -281,16 +280,16 @@ component analysis (PCA) by minimizing the Quadratic Discriminant Function.</p>
     <span class="n">interval</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># plt.show()</span>
-<span class="n">ani</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;../docs/_static/pca.gif&#39;</span><span class="p">,</span>  <span class="n">writer</span><span class="o">=</span><span class="s1">&#39;imagemagick&#39;</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">ani</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;../docs/_static/subspace_pca.gif&#39;</span><span class="p">,</span>  <span class="n">writer</span><span class="o">=</span><span class="s1">&#39;imagemagick&#39;</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 1 minutes  3.760 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-scripts-plot-pca-py">
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 1 minutes  2.478 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-scripts-plot-subspace-pca-py">
 <div class="sphx-glr-download docutils container">
-<p><a class="reference download internal" download="" href="../_downloads/a0def43afe2a9f9145a23a0828d81003/plot_pca.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_pca.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/c0cf6c7b6ad1f7f4b1c93ef0e4071ae8/plot_subspace_pca.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_subspace_pca.py</span></code></a></p>
 </div>
 <div class="sphx-glr-download docutils container">
-<p><a class="reference download internal" download="" href="../_downloads/0134cad8c687c2616df40280333e7367/plot_pca.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_pca.ipynb</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/88fb1296701c50a093e2826812e8aad8/plot_subspace_pca.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_subspace_pca.ipynb</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
@@ -304,10 +303,10 @@ component analysis (PCA) by minimizing the Quadratic Discriminant Function.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="plot_test.html" class="btn btn-neutral float-right" title="Linear and Quadratic Discriminant Analysis with covariance ellipsoid" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="plot_pca.html" class="btn btn-neutral float-right" title="PCA by minimizing the Quadratic Discriminant Function" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="plot_subspace_pca.html" class="btn btn-neutral float-left" title="Subspace PCA (PCA without mean centering)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Gallery" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
