@@ -4,11 +4,51 @@
 
 .. _sphx_glr_examples_scripts:
 
-This is my gallery
+Gallery
 ==================
 
 Below is a gallery of examples
 
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Just testing how an animated plot turns out">
+
+.. only:: html
+
+ .. figure:: /examples_scripts/images/thumb/sphx_glr_plot_ani_thumb.png
+
+     :ref:`sphx_glr_examples_scripts_plot_ani.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples_scripts/plot_ani
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example plots an animated gif showing how we can perform principle  component analysis (PC...">
+
+.. only:: html
+
+ .. figure:: /examples_scripts/images/thumb/sphx_glr_plot_pca_thumb.png
+
+     :ref:`sphx_glr_examples_scripts_plot_pca.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples_scripts/plot_pca
 
 .. raw:: html
 
