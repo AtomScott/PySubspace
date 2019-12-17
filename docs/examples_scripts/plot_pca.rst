@@ -140,12 +140,12 @@ component analysis (PCA) by minimizing the Quadratic Discriminant Function.
         interval=20, blit=False)
 
     plt.show()
-    # ani.save('../docs/_static/pca.gif',  writer='imagemagick', fps=30)
+    # ani.save('../docs/_static/pca/pca.gif',  writer='imagemagick', fps=30)
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.260 seconds)
+   **Total running time of the script:** ( 0 minutes  0.259 seconds)
 
 
 .. _sphx_glr_download_examples_scripts_plot_pca.py:

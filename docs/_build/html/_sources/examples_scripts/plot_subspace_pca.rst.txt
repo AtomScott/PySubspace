@@ -137,12 +137,12 @@ This example plots an animated gif showing how we can perform principle componen
         interval=20, blit=False)
 
     plt.show()
-    # ani.save('../docs/_static/subspace_pca.gif',  writer='imagemagick', fps=60)
+    # ani.save('../docs/_static/pca/subspace_pca.gif',  writer='imagemagick', fps=60)
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.104 seconds)
+   **Total running time of the script:** ( 0 minutes  0.103 seconds)
 
 
 .. _sphx_glr_download_examples_scripts_plot_subspace_pca.py:

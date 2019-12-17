@@ -68,7 +68,7 @@ name or dataset id.
 
 
 
-.. image:: output_5_0.png
+.. figure:: ../_static/mnist_example/output_5_0.png
 
 
 .. code:: ipython3
@@ -90,7 +90,7 @@ name or dataset id.
 
 
 
-.. image:: output_6_0.png
+.. figure:: ../_static/mnist_example/output_6_0.png
 
 
 2. Train a Support Vector classifier
@@ -408,7 +408,7 @@ hyperparameters effect exectution length.
 
 
 
-.. image:: output_19_0.png
+.. figure:: ../_static/mnist_example/output_19_0.png
 
 
 6. In depth comparison
@@ -479,7 +479,7 @@ for each model.
 
 
 
-.. image:: output_23_1.png
+.. figure:: ../_static/mnist_example/output_23_1.png
 
 
 .. parsed-literal::
@@ -508,7 +508,7 @@ for each model.
 
 
 
-.. image:: output_23_3.png
+.. figure:: ../_static/mnist_example/output_23_3.png
 
 
 .. parsed-literal::
@@ -535,6 +535,6 @@ for each model.
 
 
 
-.. image:: output_23_5.png
+.. figure:: ../_static/mnist_example/output_23_5.png
 
 

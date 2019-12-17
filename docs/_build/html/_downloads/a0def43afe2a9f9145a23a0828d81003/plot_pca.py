@@ -109,4 +109,4 @@ ani = FuncAnimation(fig, update, fargs=(plots), frames=range(1,N),
     interval=20, blit=False)
 
 plt.show()
-# ani.save('../docs/_static/pca.gif',  writer='imagemagick', fps=30)
+# ani.save('../docs/_static/pca/pca.gif',  writer='imagemagick', fps=30)

@@ -106,4 +106,4 @@ ani = FuncAnimation(fig, update, fargs=(plots), frames=range(1,N),
     interval=20, blit=False)
 
 plt.show()
-# ani.save('../docs/_static/subspace_pca.gif',  writer='imagemagick', fps=60)
+# ani.save('../docs/_static/pca/subspace_pca.gif',  writer='imagemagick', fps=60)
