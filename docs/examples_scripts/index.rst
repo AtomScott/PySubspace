@@ -12,26 +12,6 @@ Below is a gallery of examples
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="This example plots an animated gif showing how we can perform principle component analysis (PCA...">
-
-.. only:: html
-
- .. figure:: /examples_scripts/images/thumb/sphx_glr_plot_subspace_pca_thumb.png
-
-     :ref:`sphx_glr_examples_scripts_plot_subspace_pca.py`
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   /examples_scripts/plot_subspace_pca
-
-.. raw:: html
-
     <div class="sphx-glr-thumbcontainer" tooltip="This example plots an animated gif showing how we can perform principle  component analysis (PC...">
 
 .. only:: html
@@ -49,6 +29,26 @@ Below is a gallery of examples
    :hidden:
 
    /examples_scripts/plot_pca
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example plots an animated gif showing how we can perform principle component analysis (PCA...">
+
+.. only:: html
+
+ .. figure:: /examples_scripts/images/thumb/sphx_glr_plot_subspace_pca_thumb.png
+
+     :ref:`sphx_glr_examples_scripts_plot_subspace_pca.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples_scripts/plot_subspace_pca
 
 .. raw:: html
 

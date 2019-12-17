@@ -39,8 +39,8 @@
   <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="PCA by minimizing the Quadratic Discriminant Function" href="plot_pca.html" />
-    <link rel="prev" title="Gallery" href="index.html" /> 
+    <link rel="next" title="Linear and Quadratic Discriminant Analysis with covariance ellipsoid" href="plot_test.html" />
+    <link rel="prev" title="PCA by minimizing the Quadratic Discriminant Function" href="plot_pca.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -108,8 +108,8 @@
 <p class="caption"><span class="caption-text">Gallery</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Gallery</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Subspace PCA (PCA without mean centering)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_pca.html">PCA by minimizing the Quadratic Discriminant Function</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Subspace PCA (PCA without mean centering)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_test.html">Linear and Quadratic Discriminant Analysis with covariance ellipsoid</a></li>
 </ul>
 </li>
@@ -187,6 +187,14 @@
 <span id="sphx-glr-examples-scripts-plot-subspace-pca-py"></span><h1>Subspace PCA (PCA without mean centering)<a class="headerlink" href="#subspace-pca-pca-without-mean-centering" title="Permalink to this headline">¶</a></h1>
 <p>This example plots an animated gif showing how we can perform principle component analysis (PCA) without mean centering and obtain the same eigen vector.</p>
 <img alt="../_images/sphx_glr_plot_subspace_pca_001.png" class="sphx-glr-single-img" src="../_images/sphx_glr_plot_subspace_pca_001.png" />
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/atom/cvlab/thesis/cvlab_toolbox/examples/plot_subspace_pca.py:108: UserWarning: Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure.
+  plt.show()
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">import</span> <span class="nn">matplotlib.animation</span> <span class="k">as</span> <span class="nn">animation</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -198,9 +206,9 @@
 
 <span class="k">def</span> <span class="nf">dataset_fixed_cov</span><span class="p">():</span>
     <span class="sd">&#39;&#39;&#39;Generate 1 Gaussians samples with the same covariance matrix&#39;&#39;&#39;</span>
-    <span class="n">n</span><span class="p">,</span> <span class="n">dim</span> <span class="o">=</span> <span class="mi">6000</span><span class="p">,</span> <span class="mi">2</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">dim</span> <span class="o">=</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">2</span>
     <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.9</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">]])</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.6</span><span class="p">,</span> <span class="o">.</span><span class="mi">3</span><span class="p">]])</span>
     <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dim</span><span class="p">),</span> <span class="n">C</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">X</span>
 
@@ -218,6 +226,8 @@
 
 <span class="c1"># Generate dataset</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">dataset_fixed_cov</span><span class="p">()</span>
+<span class="c1"># Nomralise X</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">apply_along_axis</span><span class="p">(</span><span class="n">normalize</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">arr</span><span class="o">=</span><span class="p">(</span><span class="n">X</span><span class="o">-</span><span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span>
 
 <span class="c1"># Calculate the direction that maximises the variance</span>
 <span class="c1"># with eigen decomposition</span>
@@ -239,9 +249,11 @@
 <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Target dataset&#39;</span><span class="p">)</span> <span class="c1"># Dataset</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean&#39;</span><span class="p">)</span> <span class="c1"># Mean</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Origin&#39;</span><span class="p">)</span> <span class="c1"># Origin</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="o">*</span><span class="n">target_phi</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span><span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="o">*</span><span class="n">target_phi</span><span class="p">,</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span><span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
 <span class="c1"># and init the quiver.</span>
-<span class="n">Q</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span><span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span><span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
 <span class="n">vl</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
@@ -253,8 +265,9 @@
 <span class="n">plots</span> <span class="o">=</span> <span class="p">[</span><span class="n">ln</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">vl</span><span class="p">,</span> <span class="n">hl</span><span class="p">]</span>
 
 <span class="k">def</span> <span class="nf">update_quiver</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
-    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;J = </span><span class="si">{var:0.4f}</span><span class="s1"> @ step </span><span class="si">{num}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;step </span><span class="si">{num}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">Q</span><span class="o">.</span><span class="n">set_UVC</span><span class="p">(</span><span class="o">*</span><span class="n">phi</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Eigenvector: x=</span><span class="si">{phi[0]:0.2f}</span><span class="s1">, y=</span><span class="si">{phi[0]:0.2f}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">Q</span>
 
 <span class="k">def</span> <span class="nf">update_scatter</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">ln</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">vl</span><span class="p">,</span> <span class="n">hl</span><span class="p">):</span>
@@ -265,6 +278,7 @@
     <span class="n">ln</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">)</span>
     <span class="n">vl</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
     <span class="n">hl</span><span class="o">.</span><span class="n">set_data</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">var</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;J = </span><span class="si">{var:0.4f}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">ln</span><span class="p">,</span> <span class="n">vl</span><span class="p">,</span> <span class="n">hl</span>
 
 <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">ln</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">vl</span><span class="p">,</span> <span class="n">hl</span><span class="p">):</span>
@@ -279,11 +293,11 @@
 <span class="n">ani</span> <span class="o">=</span> <span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">fargs</span><span class="o">=</span><span class="p">(</span><span class="n">plots</span><span class="p">),</span> <span class="n">frames</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">),</span>
     <span class="n">interval</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="c1"># plt.show()</span>
-<span class="n">ani</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;../docs/_static/subspace_pca.gif&#39;</span><span class="p">,</span>  <span class="n">writer</span><span class="o">=</span><span class="s1">&#39;imagemagick&#39;</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># ani.save(&#39;../docs/_static/subspace_pca.gif&#39;,  writer=&#39;imagemagick&#39;, fps=60)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 1 minutes  2.478 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.104 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-scripts-plot-subspace-pca-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/c0cf6c7b6ad1f7f4b1c93ef0e4071ae8/plot_subspace_pca.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_subspace_pca.py</span></code></a></p>
@@ -303,10 +317,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="plot_pca.html" class="btn btn-neutral float-right" title="PCA by minimizing the Quadratic Discriminant Function" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="plot_test.html" class="btn btn-neutral float-right" title="Linear and Quadratic Discriminant Analysis with covariance ellipsoid" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="Gallery" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="plot_pca.html" class="btn btn-neutral float-left" title="PCA by minimizing the Quadratic Discriminant Function" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

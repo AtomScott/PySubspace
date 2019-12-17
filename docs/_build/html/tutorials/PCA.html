@@ -192,7 +192,7 @@
 <p>PCA aims to find linearly uncorrelated orthogonal axes, which are also known as principal components (PCs)in the m dimensional space to project the data points onto. The first PC captures the largest variance in the data and the second PC captures the second largest variance a direction which is orthogonal to the first.</p>
 <p>Below is 2-D scatter plot and line which depicts a PC being fitted on a 2-D data matrix.</p>
 <div class="figure align-center" id="id3">
-<img alt="../_images/pca.gif" src="../_images/pca.gif" />
+<img alt="../_images/pca_image.gif" src="../_images/pca_image.gif" />
 <p class="caption"><span class="caption-text">Making sense of PCA by fitting on a 2-D dataset (<a class="reference external" href="https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues">source</a>)</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="calculation-of-pca">
@@ -213,14 +213,18 @@
 <div class="math notranslate nohighlight">
 \[K \phi = \lambda\phi\]</div>
 <p>In conclusion, phi becomes the eigen vector of covariance matrix K. As for <span class="math notranslate nohighlight">\(\phi(i&gt;0)\)</span>, the story is the same and <span class="math notranslate nohighlight">\(\phi\)</span> are obtain as the eigenvectors.</p>
+<div class="figure align-center">
+<img alt="../_images/pca.gif" src="../_images/pca.gif" />
+</div>
 </div>
 <div class="section" id="pca-in-the-subspace-method">
 <h2>PCA in the Subspace Method<a class="headerlink" href="#pca-in-the-subspace-method" title="Permalink to this headline">¶</a></h2>
 <p>In many cases, the reference of the subspace Method is made by PCA.</p>
 <p>Usually, the principal components are determined as vectors which start from the center point of a classes distribution. In other words, we center the distribution according to the mean, such that the mean of the distribution will be zero. <a class="bibtex reference internal" href="#maeda2010subspace" id="id2">[Mae10]</a>.</p>
 <p>However, such mean centering is not used in the Subspace Method. The Subspace Method’s PCA is different from usual PCA at this point.</p>
+<p>Also, an input pattern’s norm is fixed to one in the subspace method. Therefore patterns are distributed on the surface of a hypershpere</p>
 <div class="figure align-center">
-<img alt="tutorials/../_static/pca/subspace_pca.gif" src="tutorials/../_static/pca/subspace_pca.gif" />
+<img alt="../_images/subspace_pca.gif" src="../_images/subspace_pca.gif" />
 </div>
 <div class="section" id="references">
 <h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>

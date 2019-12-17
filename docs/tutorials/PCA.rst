@@ -5,7 +5,7 @@ PCA aims to find linearly uncorrelated orthogonal axes, which are also known as 
 
 Below is 2-D scatter plot and line which depicts a PC being fitted on a 2-D data matrix.
 
-.. figure:: ../_static/pca/pca.gif
+.. figure:: ../_static/pca/pca_image.gif
     :align: center
 
     Making sense of PCA by fitting on a 2-D dataset (`source <https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues>`_)
@@ -40,6 +40,8 @@ If we focus on :math:`\sum_{i}(x_i - \mu)(x_i - \mu)`, we can see this is a matr
 
 In conclusion, \phi becomes the eigen vector of covariance matrix K. As for :math:`\phi(i>0)`, the story is the same and :math:`\phi` are obtain as the eigenvectors.
 
+.. figure:: ../_static/pca/pca.gif
+    :align: center
 
 
 PCA in the Subspace Method
@@ -50,6 +52,8 @@ In many cases, the reference of the subspace Method is made by PCA.
 Usually, the principal components are determined as vectors which start from the center point of a classes distribution. In other words, we center the distribution according to the mean, such that the mean of the distribution will be zero. :cite:`maeda2010subspace`.
 
 However, such mean centering is not used in the Subspace Method. The Subspace Method's PCA is different from usual PCA at this point.
+
+Also, an input pattern's norm is fixed to one in the subspace method. Therefore patterns are distributed on the surface of a hypershpere
 
 .. figure:: ../_static/pca/subspace_pca.gif
     :align: center
