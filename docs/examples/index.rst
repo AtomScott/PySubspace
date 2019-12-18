@@ -6,4 +6,4 @@ Tutorials
     :caption: Beginner Tutorials
 
     MNIST_example_with_SM
-    classifier_comparison
+    pca_to_sm
