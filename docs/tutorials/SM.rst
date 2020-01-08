@@ -33,8 +33,3 @@ i=1 xix⊤ of the class.
 Process flow of the SM The whole process of the SM consists of a learning phase and a recognition phase.
 In the learning phase All k class dq-dimensional subspaces are generated from a set of pattern vectors of each class by using PCA.
 In the recognition phase The similarities S of an input vector p to all the k class subspaces are calculated by using Equation (1). Then, the input vector is classified into the class of the class subspace with highest similarity. If the highest similarity is lower than a threshold value fixed in advance, the input vector is classified into a reject class
-
-Comments
-========
-
-.. disqus::
