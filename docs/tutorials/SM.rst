@@ -1,22 +1,25 @@
 Subspace Method
 ===============
 
-Theory
-------
+Summary
+-------
 
-The Subspace method assumes an input vector :math:`\mathbf{x}'` and :math:`k`-class subspaces. Each class subspace approximates a data distribution for a single class. This approximation is obtained by applying `PCA <PCA.html>`_ to each class :cite:`Fukui2014`.
-
-.. note::
-
-   Check out the tutorial, "`from pca to the subspace method <../examples/pca_to_sm.html>`_" for a detailed walkthrough for obtaining subspaces using pca.
+The Subspace Method (SM) is a classification technique fundamental to all other subspace based methods. There are many extensions of SM such as MSM, CMSM, OMSM and so on.
 
 .. figure:: ../_static/tutorials/SM.png
     :align: center
 
     Fig.1
 
-In Detail
----------
+.. note::
+
+   Check out the tutorial, "`from pca to the subspace method <../examples/pca_to_sm.html>`_" for a detailed walkthrough for obtaining subspaces using pca.
+
+
+Theory
+------
+
+The Subspace method assumes an input vector :math:`\mathbf{x}'` and :math:`k`-class subspaces. Each class subspace approximates a data distribution for a single class. This approximation is obtained by applying `PCA <PCA.html>`_ to each class :cite:`Fukui2014`.
 
 The similarity :math:`S` of the input vector :math:`\mathbf{x}'` to the :math:`i^{th}` class subspace :math:`Q_i` is defined based on either:
 
