@@ -61,7 +61,7 @@ We use a Scikit-learn API so it should be pretty easy to get your code up and ru
    :maxdepth: 1
    :caption: Getting Started
 
-   ./installation
+   ./getting_started/installation
 
 .. toctree:: 
    :maxdepth: 1
