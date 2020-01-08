@@ -5,7 +5,7 @@ Subspace Method
 Theory
 ------
 
-The Subspace method assumes an input vector :math:`x` and :math:`k`-class subspaces. Each class subspace approximates a data distribution for a single class. This approximation is obtained by applying `PCA <PCA.html>`_ to each class. :cite:`Fukui2014`_
+The Subspace method assumes an input vector :math:`x` and :math:`k`-class subspaces. Each class subspace approximates a data distribution for a single class. This approximation is obtained by applying `PCA <PCA.html>`_ to each class. :cite:`Fukui2014`.
 
 .. note::
 
@@ -35,8 +35,3 @@ i=1 xix⊤ of the class.
 Process flow of the SM The whole process of the SM consists of a learning phase and a recognition phase.
 In the learning phase All k class dq-dimensional subspaces are generated from a set of pattern vectors of each class by using PCA.
 In the recognition phase The similarities S of an input vector p to all the k class subspaces are calculated by using Equation (1). Then, the input vector is classified into the class of the class subspace with highest similarity. If the highest similarity is lower than a threshold value fixed in advance, the input vector is classified into a reject class
-
-
-References
-..........
-.. bibliography:: ../ref.bib

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Subspace Method &mdash; cvlab_toolbox 0.0 documentation</title>
+  <title>References &mdash; cvlab_toolbox 0.0 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
   <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Mutal Subspace Method" href="MSM.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="LDA.html" /> 
+    <link rel="next" title="MNIST example with Subspace Method" href="../examples/MNIST_example_with_SM.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="eGDA.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,17 +94,8 @@
 <p class="caption"><span class="caption-text">Tutorials</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Subspace Methods at a Glance</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Concepts Walkthrough</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="PCA.html">Principle Component Analysis</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Subspace Method</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#theory">Theory</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="MSM.html">Mutal Subspace Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="CMSM.html">Constrained Subspace Method</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Concepts Walkthrough</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">References</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Examples</span></p>
 <ul>
@@ -168,15 +159,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Concepts Walkthrough</a> &raquo;</li>
-        
-      <li>Subspace Method</li>
+      <li>References</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/tutorials/SM.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/tutorials/references.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -189,32 +178,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="subspace-method">
-<h1>Subspace Method<a class="headerlink" href="#subspace-method" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="theory">
-<h2>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h2>
-<p>The Subspace method assumes an input vector <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(k\)</span>-class subspaces. Each class subspace approximates a data distribution for a single class. This approximation is obtained by applying <a class="reference external" href="PCA.html">PCA</a> to each class. <a class="bibtex reference internal" href="references.html#fukui2014" id="id1">[Fuk14]</a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Check out the tutorial, “<a class="reference external" href="../examples/pca_to_sm.html">from pca to the subspace method</a>” for a detailed walkthrough for obtaining subspaces using pca.</p>
-</div>
-<div class="figure align-center" id="id2">
-<img alt="../_images/SM.png" src="../_images/SM.png" />
-<p class="caption"><span class="caption-text">Fig.1</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-<p>The similarity <span class="math notranslate nohighlight">\(S\)</span> of the input vector <span class="math notranslate nohighlight">\(x\)</span> to the <span class="math notranslate nohighlight">\(i^{th}\)</span> class subspace <span class="math notranslate nohighlight">\(Q_i\)</span> is defined based on either:</p>
-<ul class="simple">
-<li><p>The length of the projection vector <span class="math notranslate nohighlight">\(hat{x}\)</span>. That is the projection of <span class="math notranslate nohighlight">\(x\)</span> to <span class="math notranslate nohighlight">\(Q_i\)</span> [3] or,</p></li>
-<li><p>The minimum angle between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(Q_i\)</span> [4].</p></li>
-</ul>
-<p>The length of an input vector p is often normalized to 1.0. In this case these two criteria coincide. In the following explanation, therefore, the angle-based similarity S defined by the following equation will be used:</p>
-<p>S = cos2θ = ∑dq (p · ϕi)2 i=1 ||p||2, (1)</p>
-<p>where dq is the dimension of the class subspace, and ϕi is the i-th f-dimensional orthogonal normal basis vector of the class subspace, which are obtained from applying the principal component analysis (PCA) to a set of patterns of the class. Concretely, these orthonormal basis vectors can be obtained as the eigenvectors of the correlation matrix
-i=1 xix⊤ of the class.</p>
-<p>Process flow of the SM The whole process of the SM consists of a learning phase and a recognition phase.
-In the learning phase All k class dq-dimensional subspaces are generated from a set of pattern vectors of each class by using PCA.
-In the recognition phase The similarities S of an input vector p to all the k class subspaces are calculated by using Equation (1). Then, the input vector is classified into the class of the class subspace with highest similarity. If the highest similarity is lower than a threshold value fixed in advance, the input vector is classified into a reject class</p>
-</div>
+  <div class="section" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<p id="bibtex-bibliography-tutorials/references-0"><dl class="citation">
+<dt class="bibtex label" id="fukui2014"><span class="brackets">Fuk14</span></dt>
+<dd><p>Kazuhiro Fukui. <em>Subspace Methods</em>, pages 777–781. Springer US, Boston, MA, 2014. URL: <a class="reference external" href="https://doi.org/10.1007/978-0-387-31439-6_708">https://doi.org/10.1007/978-0-387-31439-6_708</a>, <a class="reference external" href="https://doi.org/10.1007/978-0-387-31439-6_708">doi:10.1007/978-0-387-31439-6_708</a>.</p>
+</dd>
+<dt class="bibtex label" id="fukui2005face"><span class="brackets">FY05</span></dt>
+<dd><p>Kazuhiro Fukui and Osamu Yamaguchi. Face recognition using multi-viewpoint patterns for robot vision. In <em>Robotics Research. The Eleventh International Symposium</em>, 192–201. Springer, 2005.</p>
+</dd>
+<dt class="bibtex label" id="iijima1974theory"><span class="brackets">IGM74</span></dt>
+<dd><p>Taizo Iijima, Hiroshi Genchi, and Ken-ichi Mori. A theory of character recognition by pattern matching method. In <em>Learning systems and intelligent robots</em>, pages 437–450. Springer, 1974.</p>
+</dd>
+<dt class="bibtex label" id="maeda2010subspace"><span class="brackets">Mae10</span></dt>
+<dd><p>Ken-ichi Maeda. From the subspace methods to the mutual subspace method. In <em>Computer Vision</em>, pages 135–156. Springer, 2010.</p>
+</dd>
+<dt class="bibtex label" id="watanabe1967evaluation"><span class="brackets">Wat67</span></dt>
+<dd><p>Satosi Watanabe. Evaluation and selection of variables in pattern recognition. <em>Computer and Information Science II</em>, pages 91–122, 1967.</p>
+</dd>
+</dl>
+</p>
 </div>
 
 
@@ -225,10 +208,10 @@ In the recognition phase The similarities S of an input vector p to all the k cl
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="MSM.html" class="btn btn-neutral float-right" title="Mutal Subspace Method" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../examples/MNIST_example_with_SM.html" class="btn btn-neutral float-right" title="MNIST example with Subspace Method" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="LDA.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="eGDA.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

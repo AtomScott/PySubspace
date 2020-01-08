@@ -94,13 +94,11 @@
 <p class="caption"><span class="caption-text">Tutorials</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Subspace Methods at a Glance</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#subspace-analysis">Subspace Analysis</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#subspace-analysis">Subspace Analysis</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="index.html">Concepts Walkthrough</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Examples</span></p>
 <ul>
@@ -191,9 +189,9 @@
 </div>
 <div class="section" id="subspace-analysis">
 <h2>Subspace Analysis<a class="headerlink" href="#subspace-analysis" title="Permalink to this headline">¶</a></h2>
-<p>Subspace analysis in computer vision is a generic name to describe a general framework for comparison and classification of subspaces. A typical approach in subspace analysis is the subspace method (SM) that classify an input pattern vector into several classes based on the minimum distance or angle between the input pattern vector and each class subspace, where a class subspace corresponds to the distribution of pattern vectors of the class in high dimensional vector space. <a class="bibtex reference internal" href="#fukui2014" id="id1">[Fuk14]</a></p>
-<p>SM was developed by two Japanese researchers, Watanabe and Iijima around 1970, independently. Watanabe and Iijima named their methods the CLAFIC <a class="bibtex reference internal" href="#watanabe1967evaluation" id="id2">[Wat67]</a> and the multiple similarity method <a class="bibtex reference internal" href="#iijima1974theory" id="id3">[IGM74]</a>, respectively.</p>
-<p>Furthermore, SM has been extended to mutual subspace method (MSM) by replacing an input vector with an input subspace, where the similarity between the input and reference subspace is measured by the canonical angles between them. This allows for high performance in tasks such as image set classification <a class="bibtex reference internal" href="#fukui2005face" id="id4">[FY05]</a>.</p>
+<p>Subspace analysis in computer vision is a generic name to describe a general framework for comparison and classification of subspaces. A typical approach in subspace analysis is the subspace method (SM) that classify an input pattern vector into several classes based on the minimum distance or angle between the input pattern vector and each class subspace, where a class subspace corresponds to the distribution of pattern vectors of the class in high dimensional vector space. <a class="bibtex reference internal" href="references.html#fukui2014" id="id1">[Fuk14]</a></p>
+<p>SM was developed by two Japanese researchers, Watanabe and Iijima around 1970, independently. Watanabe and Iijima named their methods the CLAFIC <a class="bibtex reference internal" href="references.html#watanabe1967evaluation" id="id2">[Wat67]</a> and the multiple similarity method <a class="bibtex reference internal" href="references.html#iijima1974theory" id="id3">[IGM74]</a>, respectively.</p>
+<p>Furthermore, SM has been extended to mutual subspace method (MSM) by replacing an input vector with an input subspace, where the similarity between the input and reference subspace is measured by the canonical angles between them. This allows for high performance in tasks such as image set classification <a class="bibtex reference internal" href="references.html#fukui2005face" id="id4">[FY05]</a>.</p>
 <p>MSM is well known as one of the most natural and effective classification method for image-sets in pattern recognition and computer vision.</p>
 <p>There are many other powerful extensions of SM, the following have been implemented:</p>
 <ul class="simple">
@@ -203,27 +201,6 @@
 <li><p>Kernel MSM/ Kernel CMSM</p></li>
 </ul>
 <p>See the following <a class="reference external" href="http://www.cvlab.cs.tsukuba.ac.jp/~kfukui/english/epapers/subspace_method.pdf">short survey</a> on subspace methods for a starting point to learn more.</p>
-<div class="section" id="references">
-<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
-<p id="bibtex-bibliography-tutorials/getting_started-0"><dl class="citation">
-<dt class="bibtex label" id="fukui2014"><span class="brackets"><a class="fn-backref" href="#id1">Fuk14</a></span></dt>
-<dd><p>Kazuhiro Fukui. <em>Subspace Methods</em>, pages 777–781. Springer US, Boston, MA, 2014. URL: <a class="reference external" href="https://doi.org/10.1007/978-0-387-31439-6_708">https://doi.org/10.1007/978-0-387-31439-6_708</a>, <a class="reference external" href="https://doi.org/10.1007/978-0-387-31439-6_708">doi:10.1007/978-0-387-31439-6_708</a>.</p>
-</dd>
-<dt class="bibtex label" id="fukui2005face"><span class="brackets"><a class="fn-backref" href="#id4">FY05</a></span></dt>
-<dd><p>Kazuhiro Fukui and Osamu Yamaguchi. Face recognition using multi-viewpoint patterns for robot vision. In <em>Robotics Research. The Eleventh International Symposium</em>, 192–201. Springer, 2005.</p>
-</dd>
-<dt class="bibtex label" id="iijima1974theory"><span class="brackets"><a class="fn-backref" href="#id3">IGM74</a></span></dt>
-<dd><p>Taizo Iijima, Hiroshi Genchi, and Ken-ichi Mori. A theory of character recognition by pattern matching method. In <em>Learning systems and intelligent robots</em>, pages 437–450. Springer, 1974.</p>
-</dd>
-<dt class="bibtex label" id="maeda2010subspace"><span class="brackets">Mae10</span></dt>
-<dd><p>Ken-ichi Maeda. From the subspace methods to the mutual subspace method. In <em>Computer Vision</em>, pages 135–156. Springer, 2010.</p>
-</dd>
-<dt class="bibtex label" id="watanabe1967evaluation"><span class="brackets"><a class="fn-backref" href="#id2">Wat67</a></span></dt>
-<dd><p>Satosi Watanabe. Evaluation and selection of variables in pattern recognition. <em>Computer and Information Science II</em>, pages 91–122, 1967.</p>
-</dd>
-</dl>
-</p>
-</div>
 </div>
 </div>
 

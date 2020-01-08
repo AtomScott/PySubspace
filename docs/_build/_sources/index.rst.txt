@@ -69,6 +69,7 @@ We use a Scikit-learn API so it should be pretty easy to get your code up and ru
 
    ./tutorials/getting_started
    ./tutorials/index
+   ./tutorials/references
 
 .. toctree::
    :maxdepth: 2
