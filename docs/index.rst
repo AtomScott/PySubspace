@@ -74,7 +74,9 @@ We use a Scikit-learn API so it should be pretty easy to get your code up and ru
    :maxdepth: 2
    :caption: Examples
 
-   ./examples/index
+   ./examples/MNIST_example_with_SM
+   ./examples/pca_to_sm
+
 
 .. toctree::
     :maxdepth: 4

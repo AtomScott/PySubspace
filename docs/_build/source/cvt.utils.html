@@ -1,0 +1,488 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>cvt.utils package &mdash; cvlab_toolbox 0.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Coding styles" href="../contribution/contribution.html" />
+    <link rel="prev" title="cvt.models package" href="cvt.models.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> cvlab_toolbox
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/getting_started.html">Subspace Methods at a Glance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Concepts Walkthrough</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/MNIST_example_with_SM.html">MNIST example with Subspace Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/pca_to_sm.html">From PCA to the Subspace Method</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="cvt.html">cvt package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="cvt.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="cvt.models.html">cvt.models package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">cvt.utils package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-cvt.utils.base">cvt.utils.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-cvt.utils.evaluation">cvt.utils.evaluation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-cvt.utils.kernel_functions">cvt.utils.kernel_functions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-cvt.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cvt.html#module-cvt">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html">Coding styles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html#contribution-rules">Contribution rules</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Gallery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples_scripts/index.html">Gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cvlab_toolbox</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="cvt.html">cvt package</a> &raquo;</li>
+        
+      <li>cvt.utils package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/source/cvt.utils.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cvt-utils-package">
+<h1>cvt.utils package<a class="headerlink" href="#cvt-utils-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-cvt.utils.base">
+<span id="cvt-utils-base-module"></span><h2>cvt.utils.base module<a class="headerlink" href="#module-cvt.utils.base" title="Permalink to this headline">¶</a></h2>
+<p>Mathematical utilities</p>
+<dl class="function">
+<dt id="cvt.utils.base.canonical_angle">
+<code class="sig-prename descclassname">cvt.utils.base.</code><code class="sig-name descname">canonical_angle</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.canonical_angle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate cannonical angles beween subspaces</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>basis matrix</em><em>, </em><em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_subdim_X</em><em>, </em><em>n_dim</em><em>)</em>) – </p></li>
+<li><p><strong>Y</strong> (<em>basis matrix</em><em>, </em><em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_subdim_Y</em><em>, </em><em>n_dim</em><em>)</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>c</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float, similarity of X, Y</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="cvt.utils.base.canonical_angle_matrix">
+<code class="sig-prename descclassname">cvt.utils.base.</code><code class="sig-name descname">canonical_angle_matrix</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.canonical_angle_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate canonical angles between subspaces
+example     similarity = MathUtils.calc_basis_vector(X, Y)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>set of basis matrix</em><em>, </em><em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_set_X</em><em>, </em><em>n_subdim</em><em>, </em><em>n_dim</em><em>)</em>) – n_subdim can be variable on each subspaces</p></li>
+<li><p><strong>Y</strong> (<em>set of basis matrix</em><em>, </em><em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_set_Y</em><em>, </em><em>n_subdim</em><em>, </em><em>n_dim</em><em>)</em>) – n_set can be variable from n_set of X
+n_subdim can be variable on each subspaces</p></li>
+<li><p><strong>Returns</strong> – C: similarity matrix, array-like, shape: (n_set_X, n_set_Y)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="cvt.utils.base.canonical_angle_matrix_f">
+<code class="sig-prename descclassname">cvt.utils.base.</code><code class="sig-name descname">canonical_angle_matrix_f</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.canonical_angle_matrix_f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate canonical angles between subspaces
+example     similarity = MathUtils.calc_basis_vector(X, Y)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>set of basis matrix</em><em>, </em><em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_set_X</em><em>, </em><em>n_subdim</em><em>, </em><em>n_dim</em><em>)</em>) – n_subdim can be variable on each subspaces</p></li>
+<li><p><strong>Y</strong> (<em>set of basis matrix</em><em>, </em><em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_set_Y</em><em>, </em><em>n_subdim</em><em>, </em><em>n_dim</em><em>)</em>) – n_set can be variable from n_set of X
+n_subdim can be variable on each subspaces</p></li>
+<li><p><strong>Returns</strong> – C: similarity matrix, array-like, shape: (n_set_X, n_set_Y)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="cvt.utils.base.cross_similarities">
+<code class="sig-prename descclassname">cvt.utils.base.</code><code class="sig-name descname">cross_similarities</code><span class="sig-paren">(</span><em class="sig-param">refs</em>, <em class="sig-param">inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.cross_similarities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calc similarities between each reference spaces and each input subspaces</p>
+<p>refs: list of array-like (n_dims, n_subdims_i)
+inputs: list of array-like (n_dims, n_subdims_j)</p>
+<p>similarities: array-like, shape (n_refs, n_inputs)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cvt.utils.base.dual_vectors">
+<code class="sig-prename descclassname">cvt.utils.base.</code><code class="sig-name descname">dual_vectors</code><span class="sig-paren">(</span><em class="sig-param">K</em>, <em class="sig-param">n_subdims=None</em>, <em class="sig-param">higher=True</em>, <em class="sig-param">eps=1e-06</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.dual_vectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calc dual representation of vectors in kernel space</p>
+<dl class="simple">
+<dt>K<span class="classifier">array-like, shape: (n_samples, n_samples)</span></dt><dd><p>Grammian Matrix of X: K(X, X)</p>
+</dd>
+<dt>n_subdims: int, default=None</dt><dd><p>Number of vectors of dual vectors to return</p>
+</dd>
+<dt>higher: boolean, default=None</dt><dd><dl class="simple">
+<dt>If True, this function returns eigenbasis corresponding to</dt><dd><p>higher <cite>n_subdims</cite> eigenvalues in descending order.</p>
+</dd>
+<dt>If False, this function returns eigenbasis corresponding to</dt><dd><p>lower <cite>n_subdims</cite> eigenvalues in descending order.</p>
+</dd>
+</dl>
+</dd>
+<dt>eps: float, default=1e-20</dt><dd><p>lower limit of eigenvalues</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>A<span class="classifier">array-like, shape: (n_samples, n_samples)</span></dt><dd><p>Dual replesentation vectors.
+it satisfies lambda[i] * A[i] &#64; A[i] == 1, where lambda[i] is i-th biggest eigenvalue</p>
+</dd>
+<dt>e:  array-like, shape: (n_samples, )</dt><dd><p>Eigen values descending sorted</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="cvt.utils.base.max_square_singular_values">
+<code class="sig-prename descclassname">cvt.utils.base.</code><code class="sig-name descname">max_square_singular_values</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.max_square_singular_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate mean square of singular values of X</p>
+<p>X : array-like, shape: (n, m)</p>
+<p>c: mean square of singular values</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cvt.utils.base.mean_square_singular_values">
+<code class="sig-prename descclassname">cvt.utils.base.</code><code class="sig-name descname">mean_square_singular_values</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.mean_square_singular_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate mean square of singular values of X</p>
+<p>X : array-like, shape: (n, m)</p>
+<p>c: mean square of singular values</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="cvt.utils.base.subspace_bases">
+<code class="sig-prename descclassname">cvt.utils.base.</code><code class="sig-name descname">subspace_bases</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">n_subdims=None</em>, <em class="sig-param">higher=True</em>, <em class="sig-param">return_eigvals=False</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.base.subspace_bases" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return subspace basis using PCA</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>n_dimensions</em><em>, </em><em>n_vectors</em><em>)</em>) – data matrix</p></li>
+<li><p><strong>n_subdims</strong> (<em>integer</em>) – number of subspace dimension</p></li>
+<li><p><strong>higher</strong> (<em>bool</em>) – if True, this function returns eigenvectors collesponding
+top-<cite>n_subdims</cite> eigenvalues. default is True.</p></li>
+<li><p><strong>return_eigvals</strong> (<em>bool</em>) – if True, this function also returns eigenvalues.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>V</strong> (<em>array-like, shape (n_dimensions, n_subdims)</em>) – bases matrix</p></li>
+<li><p><strong>w</strong> (<em>array-like shape (n_subdims)</em>) – eigenvalues</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-cvt.utils.evaluation">
+<span id="cvt-utils-evaluation-module"></span><h2>cvt.utils.evaluation module<a class="headerlink" href="#module-cvt.utils.evaluation" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="cvt.utils.evaluation.calc_eer">
+<code class="sig-prename descclassname">cvt.utils.evaluation.</code><code class="sig-name descname">calc_eer</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">labels=None</em>, <em class="sig-param">data_type='S'</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.evaluation.calc_eer" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate Error Rate (ER)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_elements</em><em>)</em>) – data matrix</p></li>
+<li><p><strong>labels</strong><strong>(</strong><strong>optional</strong><strong>)</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_elements</em><em>)</em>) – labels that represents what class each element(row) belongs to
+if it’s not given, each rows are treated as independent class</p></li>
+<li><p><strong>data_type</strong><strong>(</strong><strong>optional</strong><strong>)</strong> (<em>string</em>) – ‘S’: Similarity (default)
+‘D’: Distance</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>eer</strong> (<em>float</em>) – equal error rate</p></li>
+<li><p><strong>thresh</strong> (<em>float</em>) – threashold</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="cvt.utils.evaluation.calc_er">
+<code class="sig-prename descclassname">cvt.utils.evaluation.</code><code class="sig-name descname">calc_er</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">y</em>, <em class="sig-param">labels=None</em>, <em class="sig-param">data_type='S'</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.evaluation.calc_er" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate Error Rate (ER)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_elements</em><em>)</em>) – data matrix</p></li>
+<li><p><strong>y</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>)</em>) – true label (integer)</p></li>
+<li><p><strong>labels</strong><strong>(</strong><strong>optional</strong><strong>)</strong> (<em>ndarray</em><em>, </em><em>shape</em><em> (</em><em>n_elements</em><em>)</em>) – labels that represents what class each element(row) belongs to
+if it’s not given, each rows are treated as independent class</p></li>
+<li><p><strong>data_type</strong><strong>(</strong><strong>optional</strong><strong>)</strong> (<em>string</em>) – ‘S’: Similarity (default)
+‘D’: Distance</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>er</strong> – error rate</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-cvt.utils.kernel_functions">
+<span id="cvt-utils-kernel-functions-module"></span><h2>cvt.utils.kernel_functions module<a class="headerlink" href="#module-cvt.utils.kernel_functions" title="Permalink to this headline">¶</a></h2>
+<p>Kernel functions</p>
+<dl class="function">
+<dt id="cvt.utils.kernel_functions.l2_kernel">
+<code class="sig-prename descclassname">cvt.utils.kernel_functions.</code><code class="sig-name descname">l2_kernel</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.kernel_functions.l2_kernel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="cvt.utils.kernel_functions.linear_kernel">
+<code class="sig-prename descclassname">cvt.utils.kernel_functions.</code><code class="sig-name descname">linear_kernel</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.kernel_functions.linear_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Linear kernel. this calculates simple inner product.
+K(x, y) = x &#64; y</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array of shape</em><em> (</em><em>n_dims</em><em>, </em><em>n_samples_X</em><em>)</em>) – </p></li>
+<li><p><strong>Y</strong> (<em>array of shape</em><em> (</em><em>n_dims</em><em>, </em><em>n_samples_Y</em><em>)</em>) – </p></li>
+<li><p><strong>Returns</strong> – </p></li>
+<li><p><strong>--------</strong> – </p></li>
+<li><p><strong>K</strong> (<em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_samples_X</em><em>, </em><em>n_samples_Y</em><em>)</em>) – Grammian matrix</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="cvt.utils.kernel_functions.rbf_kernel">
+<code class="sig-prename descclassname">cvt.utils.kernel_functions.</code><code class="sig-name descname">rbf_kernel</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em>, <em class="sig-param">sigma=None</em><span class="sig-paren">)</span><a class="headerlink" href="#cvt.utils.kernel_functions.rbf_kernel" title="Permalink to this definition">¶</a></dt>
+<dd><p>RBF kernel. this is a wrapper of sklearn.metrics.pairwise.rbf_kernel.
+K(x, y) = exp(- (1/2) * (||x - y||/sigma)^2)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array of shape</em><em> (</em><em>n_dims</em><em>, </em><em>n_samples_X</em><em>)</em>) – </p></li>
+<li><p><strong>Y</strong> (<em>array of shape</em><em> (</em><em>n_dims</em><em>, </em><em>n_samples_Y</em><em>)</em>) – </p></li>
+<li><p><strong>sigma</strong> (<em>float</em><em>, </em><em>default None</em>) – If None, defaults to sqrt(n_dims / 2)</p></li>
+<li><p><strong>Returns</strong> – </p></li>
+<li><p><strong>--------</strong> – </p></li>
+<li><p><strong>K</strong> (<em>array-like</em><em>, </em><em>shape:</em><em> (</em><em>n_samples_X</em><em>, </em><em>n_samples_Y</em><em>)</em>) – Grammian matrix</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-cvt.utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-cvt.utils" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../contribution/contribution.html" class="btn btn-neutral float-right" title="Coding styles" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cvt.models.html" class="btn btn-neutral float-left" title="cvt.models package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Atom Scott
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

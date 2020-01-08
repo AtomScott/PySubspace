@@ -25,7 +25,3 @@ There are many other powerful extensions of SM, the following have been implemen
 - Kernel MSM/ Kernel CMSM
 
 See the following `short survey <http://www.cvlab.cs.tsukuba.ac.jp/~kfukui/english/epapers/subspace_method.pdf>`_ on subspace methods for a starting point to learn more.
-
-References
-..........
-.. bibliography:: ../ref.bib

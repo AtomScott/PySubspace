@@ -88,12 +88,19 @@
             
             
               <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Subspace Methods at a Glance</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Concepts Walkthrough</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="PCA.html">Principle Component Analysis</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Subspace Method</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#theory">Theory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#theory">Theory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="MSM.html">Mutal Subspace Method</a></li>
@@ -103,7 +110,8 @@
 </ul>
 <p class="caption"><span class="caption-text">Examples</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/MNIST_example_with_SM.html">MNIST example with Subspace Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/pca_to_sm.html">From PCA to the Subspace Method</a></li>
 </ul>
 <p class="caption"><span class="caption-text">API reference</span></p>
 <ul>
@@ -113,6 +121,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html">Coding styles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html#contribution-rules">Contribution rules</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Gallery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples_scripts/index.html">Gallery</a></li>
 </ul>
 
             
@@ -183,7 +195,20 @@
 <h1>Subspace Method<a class="headerlink" href="#subspace-method" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="theory">
 <h2>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h2>
-<p>The Subspace method Assume an input vector p and k class subspaces in f- dimensional vector space. The similarity S of the pattern vector p to the i-th class is defined based on either of the length of the projected input vector pˆ on the i-th reference subspace [3] or the minimum angle [4] between the input vector p and the i-th class subspace as shown in Fig.1(a).</p>
+<p>The Subspace method assumes an input vector <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(k\)</span>-class subspaces. Each class subspace approximates a data distribution for a single class. This approximation is obtained by applying <a class="reference external" href="PCA.html">PCA</a> to each class. <a href="#id1"><span class="problematic" id="id2">:cite:`Fukui2014`_</span></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check out the tutorial, “<a class="reference external" href="../examples/pca_to_sm.html">from pca to the subspace method</a>” for a detailed walkthrough for obtaining subspaces using pca.</p>
+</div>
+<div class="figure align-center" id="id3">
+<img alt="../_images/SM.png" src="../_images/SM.png" />
+<p class="caption"><span class="caption-text">Fig.1</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>The similarity <span class="math notranslate nohighlight">\(S\)</span> of the input vector <span class="math notranslate nohighlight">\(x\)</span> to the <span class="math notranslate nohighlight">\(i^{th}\)</span> class subspace <span class="math notranslate nohighlight">\(Q_i\)</span> is defined based on either:</p>
+<ul class="simple">
+<li><p>The length of the projection vector <span class="math notranslate nohighlight">\(hat{x}\)</span>. That is the projection of <span class="math notranslate nohighlight">\(x\)</span> to <span class="math notranslate nohighlight">\(Q_i\)</span> [3] or,</p></li>
+<li><p>The minimum angle between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(Q_i\)</span> [4].</p></li>
+</ul>
 <p>The length of an input vector p is often normalized to 1.0. In this case these two criteria coincide. In the following explanation, therefore, the angle-based similarity S defined by the following equation will be used:</p>
 <p>S = cos2θ = ∑dq (p · ϕi)2 i=1 ||p||2, (1)</p>
 <p>where dq is the dimension of the class subspace, and ϕi is the i-th f-dimensional orthogonal normal basis vector of the class subspace, which are obtained from applying the principal component analysis (PCA) to a set of patterns of the class. Concretely, these orthonormal basis vectors can be obtained as the eigenvectors of the correlation matrix
@@ -191,6 +216,15 @@ i=1 xix⊤ of the class.</p>
 <p>Process flow of the SM The whole process of the SM consists of a learning phase and a recognition phase.
 In the learning phase All k class dq-dimensional subspaces are generated from a set of pattern vectors of each class by using PCA.
 In the recognition phase The similarities S of an input vector p to all the k class subspaces are calculated by using Equation (1). Then, the input vector is classified into the class of the class subspace with highest similarity. If the highest similarity is lower than a threshold value fixed in advance, the input vector is classified into a reject class</p>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<p id="bibtex-bibliography-tutorials/SM-0"><dl class="citation">
+<dt class="bibtex label" id="maeda2010subspace"><span class="brackets">Mae10</span></dt>
+<dd><p>Ken-ichi Maeda. From the subspace methods to the mutual subspace method. In <em>Computer Vision</em>, pages 135–156. Springer, 2010.</p>
+</dd>
+</dl>
+</p>
+</div>
 </div>
 </div>
 

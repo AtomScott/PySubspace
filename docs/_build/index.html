@@ -22,20 +22,12 @@
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'./',
-              VERSION:'0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -44,9 +36,10 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Getting Started" href="tutorials/README.html" /> 
+    <link rel="next" title="Installation" href="getting_started/installation.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -95,11 +88,17 @@
             
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/README.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/getting_started.html">Subspace Methods at a Glance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Concepts Walkthrough</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Examples</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="examples/MNIST_with_SM.html">This is sample markdown file with a subspace classifier.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/MNIST_example_with_SM.html">MNIST example with Subspace Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/pca_to_sm.html">From PCA to the Subspace Method</a></li>
 </ul>
 <p class="caption"><span class="caption-text">API reference</span></p>
 <ul>
@@ -109,6 +108,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="contribution/contribution.html">Coding styles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribution/contribution.html#contribution-rules">Contribution rules</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Gallery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples_scripts/index.html">Gallery</a></li>
 </ul>
 
             
@@ -178,9 +181,9 @@
 <p>This is the repository of CVLAB toolbox, which contains various subspace methods for classification.</p>
 <p>All of the code is from the Computer Vision Laboratory (CVLAB), Graduate school of Systems and Information Engineering, University of Tsukuba (<a class="reference external" href="https://en.home.cvlab.cs.tsukuba.ac.jp/">web</a>). Please check the <a class="reference external" href="https://github.com/ComputerVisionLaboratory/cvlab_toolbox">github repo</a> for individual credits.</p>
 <ul class="simple">
-<li>We are always looking for motivated students to help us with our efforts. If you would like to join our lab, please contact with Prof. Fukui via e-mail.</li>
-<li>Our laboratory serves as one of the machine learning units in <a class="reference external" href="https://air.tsukuba.ac.jp/en/faculty/">the Center for Artificial Intelligence Research (C-AIR)</a>.</li>
-<li>Our laboratory also is involved with <a class="reference external" href="http://www.emp.tsukuba.ac.jp/english/">the Empowerment Informatics Program for Leading Graduate Schools</a>. If you are interested in this program, please feel free to contact Prof. Fukui or Prof. Iizuka with any questions.</li>
+<li><p>We are always looking for motivated students to help us with our efforts. If you would like to join our lab, please contact with Prof. Fukui via e-mail.</p></li>
+<li><p>Our laboratory serves as one of the machine learning units in <a class="reference external" href="https://air.tsukuba.ac.jp/en/faculty/">the Center for Artificial Intelligence Research (C-AIR)</a>.</p></li>
+<li><p>Our laboratory also is involved with <a class="reference external" href="http://www.emp.tsukuba.ac.jp/english/">the Empowerment Informatics Program for Leading Graduate Schools</a>. If you are interested in this program, please feel free to contact Prof. Fukui or Prof. Iizuka with any questions.</p></li>
 </ul>
 <p><strong>Caution</strong>.
 This is not the official documentation, it’s just an demo RTD I made to check if RTD hosting worked.
@@ -188,22 +191,67 @@ Please see <a class="reference external" href="https://github.com/ComputerVision
 </div>
 <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div>We use a Scikit-learn API so it should be pretty easy to get your code up and running. Below is the command to install with pip.</div></blockquote>
+<p>Below is the command to install with pip.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -U git+https://github.com/ComputerVisionLaboratory/cvlab_toolbox
+</pre></div>
+</div>
+<p>We use a Scikit-learn API so it should be pretty easy to get your code up and running. Here’s an example that should work copy&amp;paste.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">randint</span><span class="p">,</span> <span class="n">rand</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span> <span class="nn">cvt.models</span> <span class="kn">import</span> <span class="n">KernelMSM</span>
+
+<span class="n">dim</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n_class</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">n_train</span><span class="p">,</span> <span class="n">n_test</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span>
+
+<span class="c1"># input data X is *list* of vector sets (list of 2d-arrays)</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand</span><span class="p">(</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">dim</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_train</span><span class="p">)]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand</span><span class="p">(</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">dim</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_test</span><span class="p">)]</span>
+
+<span class="c1"># labels y is 1d-array</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">n_train</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">n_test</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">KernelMSM</span><span class="p">(</span><span class="n">n_subdims</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/README.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/installation.html">Installation</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/getting_started.html">Subspace Methods at a Glance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Concepts Walkthrough</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Examples</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="examples/MNIST_with_SM.html">This is sample markdown file with a subspace classifier.</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples/MNIST_with_SM.html#second-header">Second header</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/MNIST_example_with_SM.html">MNIST example with Subspace Method</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/MNIST_example_with_SM.html#prepare-a-dataset">1. Prepare a dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/MNIST_example_with_SM.html#train-a-support-vector-classifier">2. Train a Support Vector classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/MNIST_example_with_SM.html#train-a-k-nn-classifier">3. Train a K-NN Classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/MNIST_example_with_SM.html#train-a-sm-classifier">4. Train a SM classifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/MNIST_example_with_SM.html#improving-results">5. Improving results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/MNIST_example_with_SM.html#in-depth-comparison">6. In depth comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples/pca_to_sm.html">From PCA to the Subspace Method</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/pca_to_sm.html#prepare-a-dataset">1. Prepare a dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/pca_to_sm.html#peform-pca-on-each-class-and-select-eigenvectors-training">2. Peform PCA on each class and select eigenvectors (Training)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/pca_to_sm.html#calculate-cosine-similarities-for-each-subspace-classification">3. Calculate cosine similarities for each subspace (Classification)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/pca_to_sm.html#bad-use-case-for-sm">4. Bad use case for SM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/pca_to_sm.html#good-use-case-for-sm">5. Good use case for SM</a></li>
 </ul>
 </li>
 </ul>
@@ -246,13 +294,21 @@ Please see <a class="reference external" href="https://github.com/ComputerVision
 <li class="toctree-l1"><a class="reference internal" href="contribution/contribution.html#contribution-rules">Contribution rules</a></li>
 </ul>
 </div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Gallery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples_scripts/index.html">Gallery</a><ul>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </div>
 
@@ -264,7 +320,7 @@ Please see <a class="reference external" href="https://github.com/ComputerVision
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="tutorials/README.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="getting_started/installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
