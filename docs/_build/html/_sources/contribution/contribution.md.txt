@@ -38,3 +38,32 @@
 1. Make a pull request
 2. Ask some lab members to review the code
 3. when all agreements are taken, ask any admin member to merge it
+
+## Mathematical Notation
+
+I generally try to follow the [notation of the Deep Learning book](https://github.com/goodfeli/dlbook_notation) by Ian Goodfellow.
+
+Below is a list of the notation used here.
+
+**Numbers and Arrays**
+
+|Symbol|Latex|Description  |
+|:---:|:---:|:---:|
+|`$a$`| $a$ | A scalar (integer or real)|
+|$\va$||A vector|
+|||A matrix|
+|||A tensor|
+|||Standard basis vector|
+||||
+||||
+
+**Datasets and Distributions**
+
+|Symbol|Latex|Description  |
+|:---:|:---:|:---:|
+|`$\mathbb{X}$`||A set of training examples|
+|`$\mathbf{x}^{(i)}$`||The i-th example from a dataset|
+|`$y^{(i)}$` or `$\mathbf{y}^{(i)}$`||The target associated with x for supervised learning|
+|`$\mathbf{x}'$`||A new example from a test dataset|
+
+

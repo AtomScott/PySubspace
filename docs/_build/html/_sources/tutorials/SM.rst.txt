@@ -5,7 +5,7 @@ Subspace Method
 Theory
 ------
 
-The Subspace method assumes an input vector :math:`x` and :math:`k`-class subspaces. Each class subspace approximates a data distribution for a single class. This approximation is obtained by applying `PCA <PCA.html>`_ to each class. :cite:`Fukui2014`.
+The Subspace method assumes an input vector :math:`\mathbf{x}'` and :math:`k`-class subspaces. Each class subspace approximates a data distribution for a single class. This approximation is obtained by applying `PCA <PCA.html>`_ to each class :cite:`Fukui2014`.
 
 .. note::
 
@@ -16,21 +16,27 @@ The Subspace method assumes an input vector :math:`x` and :math:`k`-class subspa
 
     Fig.1
 
-The similarity :math:`S` of the input vector :math:`x` to the :math:`i^{th}` class subspace :math:`Q_i` is defined based on either:
+In Detail
+---------
 
-* The length of the projection vector :math:`hat{x}`. That is the projection of :math:`x` to :math:`Q_i` [3] or,
-* The minimum angle between :math:`x` and :math:`Q_i` [4].
+The similarity :math:`S` of the input vector :math:`\mathbf{x}'` to the :math:`i^{th}` class subspace :math:`Q_i` is defined based on either:
 
+* The length of the  projection of :math:`\mathbf{x}'` to :math:`Q_i` :cite:`watanabe1967evaluation`.
+* The minimum angle between :math:`\mathbf{x}'` and :math:`Q_i` :cite:`iijima1974theory`.
+
+The length of an input vector :math:`\mathbf{x}'` is often normalized to 1.0. In this case these two criteria are identical. This fact should be obvious from Fig.1.
+
+Since they are the same, from here on we think of the angle-based similarity :math:`S` defined by the following equation:
+
+.. math::
+    S = \cos{\theta} = \sum^{k}_{i=1} \frac{(\mathbf{x}' · \Phi_i)^2}{||\mathbf{x}'||^2}
+
+:math:`\Phi_i` is the :math:`i^{th}` orthogonal normal basis vector of the class subspace :math:`Q_i`, which are obtained from applying the principal component analysis (PCA) to a set of patterns of the class. In more rigourus terms, these orthonormal basis vectors can be obtained as the eigenvectors of the correlation matrix 
+
+.. math::
+    \sum^{l}_{i=1}\mathbf{x}^{(i)}\mathbf{x}^{(i)\top} where \mathbf{x}^{(i)} \in \mathbb{X} 
     
-.. (`source <https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues>`_)
-
-
-The length of an input vector p is often normalized to 1.0. In this case these two criteria coincide. In the following explanation, therefore, the angle-based similarity S defined by the following equation will be used:
-
-S = cos2θ = ∑dq (p · ϕi)2 i=1 ||p||2, (1) 
-
-where dq is the dimension of the class subspace, and ϕi is the i-th f-dimensional orthogonal normal basis vector of the class subspace, which are obtained from applying the principal component analysis (PCA) to a set of patterns of the class. Concretely, these orthonormal basis vectors can be obtained as the eigenvectors of the correlation matrix
-i=1 xix⊤ of the class.
+of the class (\mathbb{X} is the training dataset).
 
 Process flow of the SM The whole process of the SM consists of a learning phase and a recognition phase.
 In the learning phase All k class dq-dimensional subspaces are generated from a set of pattern vectors of each class by using PCA.

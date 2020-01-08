@@ -3,7 +3,7 @@ Concepts Walkthrough
 
 .. toctree::
     :maxdepth: 1
-    :caption: prerequisets
+    :caption: Prerequisets
 
     PCA
     LDA
@@ -16,6 +16,7 @@ Concepts Walkthrough
    MSM
    CMSM
    KMSM_KCMSM
+   GMSM_MCMSM
 
 .. toctree::
     :maxdepth: 1
@@ -23,6 +24,7 @@ Concepts Walkthrough
 
     GDA
     eGDA
-    CMCM
+    KMSM_KCMSM
+    GMSM_MCMSM
     CNN+CMCM
 

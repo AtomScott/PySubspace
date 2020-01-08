@@ -4,8 +4,17 @@
 `make html` 
 を実行してからbrowserで`cvlab_toolbox/docs/_build/html/index.html`を開けば良いはず．
 
+もしくは`build sphinx`?? で`cvlab_toolbox/docs/_build/index.html`??
+違いがよくわからん，
+
 もっと良い方法があれば教えてほしい．
 （`make html`しなくても保存する度に自動で更新される開発者モード的な）
+
+それなら
+1. ``cd docs/_build/html``
+2. ``python -m SimpleHTTPServer 8080``
+3. Browse to http://localhost:8080/
+がいいかもね
 
 ## 基本的なこと
 
@@ -26,5 +35,9 @@ If there are no output cells in a notebook, nbsphinx will by default execute the
 
 In the Jupyter Notebook application, you can manually clear all outputs by selecting “Cell” →
 “All Output” → “Clear” from the menu. In JupyterLab, the menu items are “Edit” → “Clear All Outputs”.
+
+## 謎
+- ローカルの_buildの中身とread the docsの中身が完全一致するわけではなさそう？？
+- 参考文献の使い方が全般的に謎い
 
 **他に質問があればgithubやslack経由で連絡ください**
