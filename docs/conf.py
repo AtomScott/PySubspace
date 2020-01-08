@@ -36,7 +36,8 @@ extensions = [
     'recommonmark',
     'sphinx.ext.autodoc',
     'sphinxcontrib.bibtex',
-    'sphinx_gallery.gen_gallery'
+    'sphinx_gallery.gen_gallery',
+    'sphinxcontrib-disqus'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -87,3 +88,6 @@ sphinx_gallery_conf = {
      'examples_dirs': '../examples',   # path to your example scripts
      'gallery_dirs': 'examples_scripts',  # path to where to save gallery generated output
 }
+
+## Disqus
+disqus_shortname = 'cvlab_toolbox'
