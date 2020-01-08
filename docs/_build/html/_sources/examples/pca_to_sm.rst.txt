@@ -5,7 +5,7 @@ From PCA to the Subspace Method
 In the example code of this tutorial, we assume for simplicity that the
 following symbols are already imported.
 
-.. code:: ipython3
+.. code:: python
 
     import matplotlib.pyplot as plt
     import numpy as np
@@ -43,7 +43,7 @@ Here we create a random set of data with 2 features.
 The ``make_classification`` function generates data for a random n-class
 classification problem.
 
-.. code:: ipython3
+.. code:: python
 
     plt.style.use('ggplot')
     
@@ -76,7 +76,7 @@ dimensional subspace to use for classification.
 This 1-dimensional subspace will determined with pca, so it will be the
 direction which captures the largest variance.
 
-.. code:: ipython3
+.. code:: python
 
     def pca(X, n_components):
         """
@@ -149,7 +149,7 @@ related to
 Below is an example using the subspaces calculated from the previous
 data.
 
-.. code:: ipython3
+.. code:: python
 
     test_x = [1, -1]
     
@@ -194,7 +194,7 @@ data.
 Now that we understand the subspace method, lets classify the data we
 used to generate the subspaces to see how well our classifier works.
 
-.. code:: ipython3
+.. code:: python
 
     score = 0
     
@@ -230,7 +230,7 @@ Why could this be?
 Let’s have a look at the decision boundary to understand what is going
 on.
 
-.. code:: ipython3
+.. code:: python
 
     # This can be resused to visualize boundaries of other classifiers
     def plot_decision_boundaries(clf, X, y, h=0.01, show=True):
@@ -311,7 +311,7 @@ distribution with the same covariance matrix.
 
 Consider the following data:
 
-.. code:: ipython3
+.. code:: python
 
     X_ = np.append(
         np.random.normal(loc=(-2, 0), size=(500, 2)),
@@ -333,7 +333,7 @@ Consider the following data:
 If we conduct pca onto these distribution we should get a very similar
 eigenvectors.
 
-.. code:: ipython3
+.. code:: python
 
     for c in np.unique(y_):
         eig_vals, eig_vecs = pca(X_[np.where(y_==c)], 1)
@@ -352,7 +352,7 @@ eigenvectors.
 
 Obviously the resulting classifier is not very good.
 
-.. code:: ipython3
+.. code:: python
 
     smc = SubspaceMethod(n_subdims=1, faster_mode=True)
     smc.fit(*format_input(X_, y_))
@@ -375,7 +375,7 @@ The subspace method becomes more powerful in higher dimensions.
 I will demonstrate this by generating toy data in high dimensions and
 apply the subspace method to it.
 
-.. code:: ipython3
+.. code:: python
 
     scores = []
     n_subdims = []
@@ -393,7 +393,7 @@ apply the subspace method to it.
         n_subdims.append(max_score[0])
         scores.append(max_score[1])
 
-.. code:: ipython3
+.. code:: python
 
     fig, ax1 = plt.subplots()
     ax2 = ax1.twinx()

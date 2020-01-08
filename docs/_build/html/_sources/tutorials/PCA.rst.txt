@@ -43,22 +43,5 @@ In conclusion, \phi becomes the eigen vector of covariance matrix K. As for :mat
 .. figure:: ../_static/pca/pca.gif
     :align: center
 
+    Code can be found in the `gallery <../examples_scripts/plot_pca.html#sphx-glr-examples-scripts-plot-pca-py>`_.
 
-PCA in the Subspace Method
---------------------------
-
-In many cases, the reference of the subspace Method is made by PCA.
-
-Usually, the principal components are determined as vectors which start from the center point of a classes distribution. In other words, we center the distribution according to the mean, such that the mean of the distribution will be zero. :cite:`maeda2010subspace`.
-
-However, such mean centering is not used in the Subspace Method. The Subspace Method's PCA is different from usual PCA at this point.
-
-Also, an input pattern's norm is fixed to one in the subspace method. Therefore patterns are distributed on the surface of a hypershpere
-
-.. figure:: ../_static/pca/subspace_pca.gif
-    :align: center
-
-
-References
-..........
-.. bibliography:: ../ref.bib

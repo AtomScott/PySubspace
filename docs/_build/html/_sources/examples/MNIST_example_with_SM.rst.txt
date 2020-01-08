@@ -5,7 +5,7 @@ MNIST example with Subspace Method
 In the example code of this tutorial, we assume for simplicity that the
 following symbols are already imported.
 
-.. code:: ipython3
+.. code:: python
 
     import sys, os, numpy as np
     import matplotlib.pyplot as plt, seaborn as sns
@@ -46,7 +46,7 @@ We will conduct the procedure in the following steps.
 Sklearn provides an (experimental) API to fetch datasets from openml by
 name or dataset id.
 
-.. code:: ipython3
+.. code:: python
 
     # Fetch the MNIST data
     X, y = fetch_openml('mnist_784', version=1, return_X_y=True)
@@ -54,7 +54,7 @@ name or dataset id.
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, train_size=10000, test_size=2000)
 
-.. code:: ipython3
+.. code:: python
 
     # Display an example from the MNIST dataset.
     # `x` contains the input image array and `t` contains that target class
@@ -71,7 +71,7 @@ name or dataset id.
 .. figure:: ../_static/mnist_example/output_5_0.png
 
 
-.. code:: ipython3
+.. code:: python
 
     from scipy.constants import golden as g_ratio
     from pandas import DataFrame as DF
@@ -131,7 +131,7 @@ Although the rbf kernel will work better, it won’t be fair to compare it
 to the linear subspace method. SM has non-linear extensions such as
 kernel-MSM which will better suited for comparison.
 
-.. code:: ipython3
+.. code:: python
 
     from sklearn.svm import SVC
     
@@ -175,7 +175,7 @@ boundaries less distinct.
 The K-NN classifier is simple and effective but it’s computation does
 take time and scales in quadractic time.
 
-.. code:: ipython3
+.. code:: python
 
     from sklearn.neighbors import KNeighborsClassifier
     
@@ -215,7 +215,7 @@ principles, but I think it is more intuitive when thinking in subspaces.
 
 ※ Input may be revised in the future
 
-.. code:: ipython3
+.. code:: python
 
     # This function will take in the X, y defined above 
     # and return the data in the format we need
@@ -246,7 +246,7 @@ passing ``faster_mode=True``.
 
 Below is a speed comparison.
 
-.. code:: ipython3
+.. code:: python
 
     %timeit SubspaceMethod(n_subdims=5, faster_mode=False).fit(*format_input(X_train, y_train))
 
@@ -256,7 +256,7 @@ Below is a speed comparison.
     497 ms ± 37.5 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 
 
-.. code:: ipython3
+.. code:: python
 
     %timeit SubspaceMethod(n_subdims=5, faster_mode=True).fit(*format_input(X_train, y_train))
 
@@ -280,7 +280,7 @@ Since we are only tuning one parameter, we can conduct an exhaustive
 search. We’ll also keep track of the run time to see how the
 hyperparameters effect exectution length.
 
-.. code:: ipython3
+.. code:: python
 
     from time import time
     from tqdm import tqdm
@@ -316,7 +316,7 @@ hyperparameters effect exectution length.
     100%|██████████| 11/11 [09:32<00:00, 53.35s/it]
 
 
-.. code:: ipython3
+.. code:: python
 
     data = [(k, clf, score,time) for (k, clf), (score,time) in results.items()]
     df = DF(data, columns=['param value','Classifier','accuracy','time'])
@@ -394,7 +394,7 @@ hyperparameters effect exectution length.
 
 
 
-.. code:: ipython3
+.. code:: python
 
     fig =  plt.figure(figsize=(6*g_ratio, 3))
     
@@ -422,7 +422,7 @@ Here we will follow this
 to easily calculate the precision, recall, f1-score and confusion matrix
 for each model.
 
-.. code:: ipython3
+.. code:: python
 
     knnc = KNeighborsClassifier(n_neighbors=1)
     knnc.fit(X_train, y_train)
@@ -434,7 +434,7 @@ for each model.
     smc.fit(*format_input(X_train, y_train))
     smc.classes_ = np.unique(y) # これいらないようにコード変える
 
-.. code:: ipython3
+.. code:: python
 
     from sklearn import metrics
     
