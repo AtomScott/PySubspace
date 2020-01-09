@@ -98,9 +98,22 @@
 <li class="toctree-l2"><a class="reference internal" href="PCA.html">Principle Component Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SM.html">Subspace Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MSM.html">Mutal Subspace Method</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Constrained Subspace Method</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Constrained Subspace Method</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general-difference-subspace-gds">General Difference Subspace (GDS)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#calculation-of-gds">Calculation of GDS</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#constrained-msm-cmsm">Constrained MSM (CMSM)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#learning-phase">Learning Phase</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#recognition-phase">Recognition Phase</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Examples</span></p>
 <ul>
@@ -115,6 +128,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html">Coding styles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html#contribution-rules">Contribution rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html#mathematical-notation">Mathematical Notation</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Gallery</span></p>
 <ul>
@@ -187,6 +201,42 @@
             
   <div class="section" id="constrained-subspace-method">
 <h1>Constrained Subspace Method<a class="headerlink" href="#constrained-subspace-method" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>The Constrained Mutual Subspace Method (CMSM) is an extension of the Mutual Subspace Method (MSM) <a class="bibtex reference internal" href="references.html#fukui2005face" id="id1">[FY05]</a>. In CMSM, we project the input subspace and the reference subspace onto the General Difference Subspace (GDS). This step is useful to extract effective features for classification <a class="bibtex reference internal" href="references.html#nishiyama2005" id="id2">[NYF05]</a>.</p>
+<div class="figure align-center" id="id4">
+<img alt="../_images/CMSM.png" src="../_images/CMSM.png" />
+<p class="caption"><span class="caption-text">Fig.1</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="general-difference-subspace-gds">
+<h2>General Difference Subspace (GDS)<a class="headerlink" href="#general-difference-subspace-gds" title="Permalink to this headline">¶</a></h2>
+<p>A difference space can be defined between two subspaces, just as a difference vector exists between two vectors (See fig 2.). The difference space is a subspace containing the difference vector <span class="math notranslate nohighlight">\(d_i\)</span> between the <span class="math notranslate nohighlight">\(i_{th}\)</span> canonical vectors of subspaces <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> and <span class="math notranslate nohighlight">\(\mathcal{Q}\)</span>, i.e. <span class="math notranslate nohighlight">\(u_i\)</span> and <span class="math notranslate nohighlight">\(v_i\)</span>.</p>
+<p>The General Difference Subspace (GDS) is not the differece subspace between two only subspaces, but instead a differece subspace of multiple subspaces <span class="bibtex" id="id3">[Fukui2015]</span>.</p>
+<p>A projection to the GDS usually results in an increase of orthoganality between subspaces. Furthermore, the projection of vector data onto the GDS can increase the Fisher discrimination ratio, and can perform feature extraction effective for discrimination.</p>
+<div class="figure align-center" id="id5">
+<img alt="../_images/CMSM_concept.png" src="../_images/CMSM_concept.png" />
+<p class="caption"><span class="caption-text">Fig 2. <a class="reference external" href="https://www.researchgate.net/publication/220757276_Face_Recognition_Using_Multi-viewpoint_Patterns_for_Robot_Vision">source</a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="calculation-of-gds">
+<h3>Calculation of GDS<a class="headerlink" href="#calculation-of-gds" title="Permalink to this headline">¶</a></h3>
+<p>When projecting data onto the generalized difference subspace, if the number of dimensions g is (the number of classes -1), the Fisher discrimination ratio of the projected data is maximized.</p>
+<p>The number of dimensions g of the generalized difference subspace is determined by the number of eigenvectors extracted from W.</p>
+</div>
+</div>
+<div class="section" id="constrained-msm-cmsm">
+<h2>Constrained MSM (CMSM)<a class="headerlink" href="#constrained-msm-cmsm" title="Permalink to this headline">¶</a></h2>
+<p>In Constrained MSM (CMSM), a constrained subspace <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> is introduced. <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> is a ideally a subspace which includes the effective components for recognition and does not include any unnecessary components such as undersirable variation. Usually, the GDS is used as <span class="math notranslate nohighlight">\(\mathcal{C}\)</span>.</p>
+<div class="section" id="learning-phase">
+<h3>Learning Phase<a class="headerlink" href="#learning-phase" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Generate <span class="math notranslate nohighlight">\(k\)</span> class subspaces from each class by using PCA.</p></li>
+</ol>
+</div>
+<div class="section" id="recognition-phase">
+<h3>Recognition Phase<a class="headerlink" href="#recognition-phase" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
 </div>
 
 

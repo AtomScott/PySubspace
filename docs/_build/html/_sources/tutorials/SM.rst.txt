@@ -1,23 +1,25 @@
 Subspace Method
 ===============
 
+Summary
+-------
 
-Theory
-------
-
-The Subspace method assumes an input vector :math:`\mathbf{x}'` and :math:`k`-class subspaces. Each class subspace approximates a data distribution for a single class. This approximation is obtained by applying `PCA <PCA.html>`_ to each class :cite:`Fukui2014`.
-
-.. note::
-
-   Check out the tutorial, "`from pca to the subspace method <../examples/pca_to_sm.html>`_" for a detailed walkthrough for obtaining subspaces using pca.
+The Subspace Method (SM) is a classification technique fundamental to all other subspace based methods. There are many extensions of SM such as MSM, CMSM, OMSM and so on.
 
 .. figure:: ../_static/tutorials/SM.png
     :align: center
 
     Fig.1
 
-In Detail
----------
+.. note::
+
+   Check out the tutorial, "`from pca to the subspace method <../examples/pca_to_sm.html>`_" for a detailed walkthrough for obtaining subspaces using pca.
+
+
+Theory
+------
+
+The Subspace method assumes an input vector :math:`\mathbf{x}'` and :math:`k`-class subspaces. Each class subspace approximates a data distribution for a single class. This approximation is obtained by applying `PCA <PCA.html>`_ to each class :cite:`Fukui2014`.
 
 The similarity :math:`S` of the input vector :math:`\mathbf{x}'` to the :math:`i^{th}` class subspace :math:`Q_i` is defined based on either:
 
@@ -36,8 +38,17 @@ Since they are the same, from here on we think of the angle-based similarity :ma
 .. math::
     \sum^{l}_{i=1}\mathbf{x}^{(i)}\mathbf{x}^{(i)\top} where \mathbf{x}^{(i)} \in \mathbb{X} 
     
-of the class (\mathbb{X} is the training dataset).
+of the class (:math:`\mathbb{X}` is the training dataset).
 
-Process flow of the SM The whole process of the SM consists of a learning phase and a recognition phase.
-In the learning phase All k class dq-dimensional subspaces are generated from a set of pattern vectors of each class by using PCA.
-In the recognition phase The similarities S of an input vector p to all the k class subspaces are calculated by using Equation (1). Then, the input vector is classified into the class of the class subspace with highest similarity. If the highest similarity is lower than a threshold value fixed in advance, the input vector is classified into a reject class
+Learning Phase
+~~~~~~~~~~~~~~
+
+1. Generate :math:`k` class subspaces from each class by using PCA.
+
+Recognition Phase
+~~~~~~~~~~~~~~~~~
+
+1. Calculate :math:`S` between :math:`\mathbf{x}` and each subspace :math:`Q_i`. 
+2. Classify the :math:`\mathbf{x}` into the class where :math:`S` was calculated to be the highest.
+
+Also, you may add a rejection thershold on :math:`S` to reject classifications with low similarity.

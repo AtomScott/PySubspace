@@ -16,7 +16,7 @@ Theory
 
 The Subspace method assumes an input subspace and :math:`k` class subspaces. Let us define the input subspace to be a :math:`d_p`-dimensional subspace :math:`\mathcal{P}` and the class subspaces to be :math:`d_q`-dimensional subspaces :math:`\{\mathcal{Q}, \mathcal{R}, \mathcal{S}...\}`.
 
-The similarity :math:`S` between, for example, :math:`\mathcal{P}` and :math:`\mathcal{Q}` was originally defined as the minimum canonical angle :math:`\theta_1`. Canonical angles :cite:`chatelin2012eigenvalues`_ are uniquely defined as:
+The similarity :math:`S` between, for example, :math:`\mathcal{P}` and :math:`\mathcal{Q}` was originally defined as the minimum canonical angle :math:`\theta_1`. Canonical angles :cite:`chatelin2012eigenvalues` are uniquely defined as:
 
 .. math::
     \cos^2 \theta_i = \max_{\substack{u_i \perp u_j(=1,...,i−1) \\ v_i \perp v_j(=1,...,i−1)}} \frac{|(u_1,v_i)|^2}{||u_i||^2||v_i||^2}
@@ -29,6 +29,11 @@ We can also include the remaining canonical angles when calculating the similari
     :math:`\tilde{S} = \frac{1}{t} \sum^{t}_{i=1}\cos{\theta_i}^2
 
 This value :math:`\tilde{S}` reflects the structural similarity between two subspaces. It is also defined on the :math:`t` smallest canonical angles.
+
+.. figure:: ../_static/tutorials/MSM_structural_sim.png
+    :align: center
+
+    Fig.2 `source <https://www.researchgate.net/publication/220757276_Face_Recognition_Using_Multi-viewpoint_Patterns_for_Robot_Vision>`_
 
 For practical applications, the canonical angles can be easily obtained by applying the SVD to the orthonormal basis vectors of the subspaces.
 

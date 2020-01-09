@@ -98,9 +98,20 @@
 <li class="toctree-l2"><a class="reference internal" href="PCA.html">Principle Component Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="SM.html">Subspace Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MSM.html">Mutal Subspace Method</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Constrained Subspace Method</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Constrained Subspace Method</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#theory">Theory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general-difference-subspace-gds">General Difference Subspace (GDS)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#constrained-msm-cmsm">Constrained MSM (CMSM)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#learning-phase">Learning Phase</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#recognition-phase">Recognition Phase</a></li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Examples</span></p>
 <ul>
@@ -115,6 +126,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html">Coding styles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html#contribution-rules">Contribution rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html#mathematical-notation">Mathematical Notation</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Gallery</span></p>
 <ul>
@@ -187,6 +199,32 @@
             
   <div class="section" id="constrained-subspace-method">
 <h1>Constrained Subspace Method<a class="headerlink" href="#constrained-subspace-method" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>The Mutual Subspace Method (MSM) is an extension of the Subspace Method (SM), where instead of having an input vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, we use an input subspace <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>. MSM is commonly used for image set classification <a class="bibtex reference internal" href="references.html#sakai2019gait" id="id1">[SSF19]</a>.</p>
+<div class="figure align-center" id="id2">
+<img alt="../_images/CMSM.png" src="../_images/CMSM.png" />
+<p class="caption"><span class="caption-text">Fig.1</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="theory">
+<h2>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="general-difference-subspace-gds">
+<h3>General Difference Subspace (GDS)<a class="headerlink" href="#general-difference-subspace-gds" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="constrained-msm-cmsm">
+<h3>Constrained MSM (CMSM)<a class="headerlink" href="#constrained-msm-cmsm" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="learning-phase">
+<h3>Learning Phase<a class="headerlink" href="#learning-phase" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Generate <span class="math notranslate nohighlight">\(k\)</span> class subspaces from each class by using PCA.</p></li>
+</ol>
+</div>
+<div class="section" id="recognition-phase">
+<h3>Recognition Phase<a class="headerlink" href="#recognition-phase" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
 </div>
 
 

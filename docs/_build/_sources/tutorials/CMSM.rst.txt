@@ -1,2 +1,30 @@
 Constrained Subspace Method
 ===========================
+
+Summary
+-------
+
+The Mutual Subspace Method (MSM) is an extension of the Subspace Method (SM), where instead of having an input vector :math:`\mathbf{x}`, we use an input subspace :math:`\mathcal{P}`. MSM is commonly used for image set classification :cite:`sakai2019gait`.
+
+.. figure:: ../_static/tutorials/CMSM.png
+    :align: center
+
+    Fig.1
+
+Theory
+------
+
+General Difference Subspace (GDS)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Constrained MSM (CMSM)
+~~~~~~~~~~~~~~~~~~~~~~
+
+Learning Phase
+~~~~~~~~~~~~~~
+
+1. Generate :math:`k` class subspaces from each class by using PCA.
+
+Recognition Phase
+~~~~~~~~~~~~~~~~~
