@@ -98,6 +98,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="index.html">Concepts Walkthrough</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Examples</span></p>
 <ul>
@@ -112,6 +113,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html">Coding styles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html#contribution-rules">Contribution rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html#mathematical-notation">Mathematical Notation</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Gallery</span></p>
 <ul>
@@ -188,9 +190,9 @@
 </div>
 <div class="section" id="subspace-analysis">
 <h2>Subspace Analysis<a class="headerlink" href="#subspace-analysis" title="Permalink to this headline">¶</a></h2>
-<p>Subspace analysis in computer vision is a generic name to describe a general framework for comparison and classification of subspaces. A typical approach in subspace analysis is the subspace method (SM) that classify an input pattern vector into several classes based on the minimum distance or angle between the input pattern vector and each class subspace, where a class subspace corresponds to the distribution of pattern vectors of the class in high dimensional vector space. <span class="bibtex" id="id1">[Fukui2014]</span></p>
-<p>SM was developed by two Japanese researchers, Watanabe and Iijima around 1970, independently. Watanabe and Iijima named their methods the CLAFIC <span class="bibtex" id="id2">[watanabe1967evaluation]</span> and the multiple similarity method <span class="bibtex" id="id3">[iijima1974theory]</span>, respectively.</p>
-<p>Furthermore, SM has been extended to mutual subspace method (MSM) by replacing an input vector with an input subspace, where the similarity between the input and reference subspace is measured by the canonical angles between them. This allows for high performance in tasks such as image set classification <span class="bibtex" id="id4">[fukui2005face]</span>.</p>
+<p>Subspace analysis in computer vision is a generic name to describe a general framework for comparison and classification of subspaces. A typical approach in subspace analysis is the subspace method (SM) that classify an input pattern vector into several classes based on the minimum distance or angle between the input pattern vector and each class subspace, where a class subspace corresponds to the distribution of pattern vectors of the class in high dimensional vector space. <a class="bibtex reference internal" href="references.html#fukui2014" id="id1">[Fuk14]</a></p>
+<p>SM was developed by two Japanese researchers, Watanabe and Iijima around 1970, independently. Watanabe and Iijima named their methods the CLAFIC <a class="bibtex reference internal" href="references.html#watanabe1967evaluation" id="id2">[Wat67]</a> and the multiple similarity method <a class="bibtex reference internal" href="references.html#iijima1974theory" id="id3">[IGM74]</a>, respectively.</p>
+<p>Furthermore, SM has been extended to mutual subspace method (MSM) by replacing an input vector with an input subspace, where the similarity between the input and reference subspace is measured by the canonical angles between them. This allows for high performance in tasks such as image set classification <a class="bibtex reference internal" href="references.html#fukui2005face" id="id4">[FY05]</a>.</p>
 <p>MSM is well known as one of the most natural and effective classification method for image-sets in pattern recognition and computer vision.</p>
 <p>There are many other powerful extensions of SM, the following have been implemented:</p>
 <ul class="simple">

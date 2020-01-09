@@ -3,9 +3,10 @@ Concepts Walkthrough
 
 .. toctree::
     :maxdepth: 1
-    :caption: Prerequisets
+    :caption: prerequisites
 
     PCA
+    KPCA
     LDA
 
 .. toctree::

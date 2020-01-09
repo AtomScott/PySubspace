@@ -212,7 +212,7 @@
 <div class="section" id="general-difference-subspace-gds">
 <h2>General Difference Subspace (GDS)<a class="headerlink" href="#general-difference-subspace-gds" title="Permalink to this headline">¶</a></h2>
 <p>A difference space can be defined between two subspaces, just as a difference vector exists between two vectors (See fig 2.). The difference space is a subspace containing the difference vector <span class="math notranslate nohighlight">\(d_i\)</span> between the <span class="math notranslate nohighlight">\(i_{th}\)</span> canonical vectors of subspaces <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> and <span class="math notranslate nohighlight">\(\mathcal{Q}\)</span>, i.e. <span class="math notranslate nohighlight">\(u_i\)</span> and <span class="math notranslate nohighlight">\(v_i\)</span>.</p>
-<p>The General Difference Subspace (GDS) is not the differece subspace between two only subspaces, but instead a differece subspace of multiple subspaces <span class="bibtex" id="id3">[Fukui2015]</span>.</p>
+<p>The General Difference Subspace (GDS) is not the differece subspace between two only subspaces, but instead a differece subspace of multiple subspaces <a class="bibtex reference internal" href="references.html#fukui2015" id="id3">[FM15]</a>.</p>
 <p>A projection to the GDS usually results in an increase of orthoganality between subspaces. Furthermore, the projection of vector data onto the GDS can increase the Fisher discrimination ratio, and can perform feature extraction effective for discrimination.</p>
 <div class="figure align-center" id="id5">
 <img alt="../_images/CMSM_concept.png" src="../_images/CMSM_concept.png" />
@@ -220,6 +220,10 @@
 </div>
 <div class="section" id="calculation-of-gds">
 <h3>Calculation of GDS<a class="headerlink" href="#calculation-of-gds" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(\Phi^C=[\phi_1^C,\phi_d^C]\)</span> be the <span class="math notranslate nohighlight">\(d\)</span>-dimensional orthogonal bais vectors of the subspace of class <span class="math notranslate nohighlight">\(C\)</span>. The GDS can be obtained by applying eigendecomposition to the following matrix <span class="math notranslate nohighlight">\(G\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[G = \sum^C_{c=1}\sum^d_{i=1}\phi^c_i\phi_i^{c\top}
+G = W \Lambda W\]</div>
 <p>When projecting data onto the generalized difference subspace, if the number of dimensions g is (the number of classes -1), the Fisher discrimination ratio of the projected data is maximized.</p>
 <p>The number of dimensions g of the generalized difference subspace is determined by the number of eigenvectors extracted from W.</p>
 </div>
@@ -231,10 +235,19 @@
 <h3>Learning Phase<a class="headerlink" href="#learning-phase" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Generate <span class="math notranslate nohighlight">\(k\)</span> class subspaces from each class by using PCA.</p></li>
+<li><p>Generate a GDS using the generate class subspaces.</p></li>
+<li><p>Project the training data onto the GDS.</p></li>
+<li><p>Generate <span class="math notranslate nohighlight">\(k\)</span> class subspaces using the projected data and PCA.</p></li>
 </ol>
 </div>
 <div class="section" id="recognition-phase">
 <h3>Recognition Phase<a class="headerlink" href="#recognition-phase" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Project the input data onto the GDS abd generate the input subspace <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>.</p></li>
+<li><p>Calculate <span class="math notranslate nohighlight">\(S\)</span> (or <span class="math notranslate nohighlight">\(\tilde{S}\)</span>) between <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> and each subspace <span class="math notranslate nohighlight">\(\mathcal{Q}\)</span>.</p></li>
+<li><p>Classify <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> into the class where <span class="math notranslate nohighlight">\(S\)</span> (or <span class="math notranslate nohighlight">\(\tilde{S}\)</span>) was calculated to be the highest.</p></li>
+</ol>
+<p>Also, you may add a rejection thershold on <span class="math notranslate nohighlight">\(S\)</span> (or <span class="math notranslate nohighlight">\(\tilde{S}\)</span>) to reject classifications with low similarity.</p>
 </div>
 </div>
 </div>

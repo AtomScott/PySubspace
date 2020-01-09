@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Kernel Principle Component Analysis &mdash; cvlab_toolbox 0.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="LDA.html" />
+    <link rel="prev" title="Principle Component Analysis" href="PCA.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> cvlab_toolbox
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Subspace Methods at a Glance</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Concepts Walkthrough</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="PCA.html">Principle Component Analysis</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Kernel Principle Component Analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#theory">Theory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#kernel-trick">Kernel Trick</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#radial-basis-function-kernel">Radial Basis Function Kernel</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#calculation-of-pca">Calculation of PCA</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="SM.html">Subspace Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MSM.html">Mutal Subspace Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CMSM.html">Constrained Subspace Method</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/MNIST_example_with_SM.html">MNIST example with Subspace Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/pca_to_sm.html">From PCA to the Subspace Method</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../source/cvt.html">cvt package</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html">Coding styles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html#contribution-rules">Contribution rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html#mathematical-notation">Mathematical Notation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Gallery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples_scripts/index.html">Gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cvlab_toolbox</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Concepts Walkthrough</a> &raquo;</li>
+        
+      <li>Kernel Principle Component Analysis</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorials/KPCA.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="kernel-principle-component-analysis">
+<h1>Kernel Principle Component Analysis<a class="headerlink" href="#kernel-principle-component-analysis" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Kernel Principal Component Analysis (kernel PCA) extends <a class="reference external" href="PCA.html">principal component analysis (PCA)</a> using kernel methods. KPCA allows originally linear operations of PCA to performed in a generalized euclidean space (<a class="reference external" href="https://en.wikipedia.org/wiki/Reproducing_kernel_Hilbert_space">Reproducing kernel Hilbert space</a>).</p>
+<p>Given an appropriate kernel, it is possible to construct a hyper plane that linearly separates the classes the in feature space.</p>
+<div class="figure align-center" id="id1">
+<img alt="../_images/kpca1.png" src="../_images/kpca1.png" />
+<p class="caption"><span class="caption-text">Left: Input points before KPCA. Center: Output after kernel PCA with <span class="math notranslate nohighlight">\(k(\mathbf{x}^{\top}\mathbf{y}+1)^2\)</span>. Right : Output after KPCA with a Gaussian kernel. (<a class="reference external" href="https://en.wikipedia.org/wiki/Kernel_principal_component_analysis">source</a>)</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="theory">
+<h2>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h2>
+<p>In general, kernel methods use a non-linear transformation <span class="math notranslate nohighlight">\(\phi: \mathbb{R}^d \to \mathbb{R}^{'}\)</span> to handle data <span class="math notranslate nohighlight">\(\mathbb{X} = [\mathbf{x}^{(1)}, .. \mathbf{x}^{(N)}]\)</span> in feature space.</p>
+<div class="section" id="kernel-trick">
+<h3>Kernel Trick<a class="headerlink" href="#kernel-trick" title="Permalink to this headline">¶</a></h3>
+<p>Calculating directly in feature space is unrealistic (<em>exaplanation</em>). However, by defining a kernel function <span class="math notranslate nohighlight">\(k(\mathbf{x}^{(i)}, \mathbf{x}^{(j)})=\phi(\mathbf{x}^{(i)})^{\top}, \phi(\mathbf{x}^{(j)})\)</span> to calcualte the inner product we can perform inner product calculation in the original space. Therefore greatly reducing calculation time. This approach is named the kernel trick.</p>
+</div>
+<div class="section" id="radial-basis-function-kernel">
+<h3>Radial Basis Function Kernel<a class="headerlink" href="#radial-basis-function-kernel" title="Permalink to this headline">¶</a></h3>
+<p>In many kernel based classification methods, the Radial Basis Function Kernel is used. It is defined as the following:</p>
+<div class="math notranslate nohighlight">
+\[k(\mathbf{x}^{(i)}, \mathbf{x}^{(j)}) = exp(-\frac{||\mathbf{x}^{(i)}-\mathbf{x}^{(j)}||^2}{2\sigma ^2})\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Subspaces methods such as KMSM and KCMSM universally use RBF as the kernel. RBF is also the default parameter for in support vector classifier in the <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html">scikit-learn implementation</a> .</p>
+</div>
+</div>
+</div>
+<div class="section" id="calculation-of-pca">
+<h2>Calculation of PCA<a class="headerlink" href="#calculation-of-pca" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="LDA.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="PCA.html" class="btn btn-neutral float-left" title="Principle Component Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Atom Scott
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

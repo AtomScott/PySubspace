@@ -26,7 +26,7 @@ Where :math:`\mathbf{u}_i \in \mathcal{P}`, :math:`\mathbf{v}_i \in \mathcal{Q}`
 We can also include the remaining canonical angles when calculating the similarity. 
 
 .. math::
-    :math:`\tilde{S} = \frac{1}{t} \sum^{t}_{i=1}\cos{\theta_i}^2
+    \tilde{S} = \frac{1}{t} \sum^{t}_{i=1}\cos{\theta_i}^2
 
 This value :math:`\tilde{S}` reflects the structural similarity between two subspaces. It is also defined on the :math:`t` smallest canonical angles.
 
