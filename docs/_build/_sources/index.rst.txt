@@ -6,6 +6,19 @@
 Welcome to cvlab_toolbox's documentation!
 =========================================
 
+.. Warning::
+    This is not yet released. Privacy levels are set to `Private <https://docs.readthedocs.io/en/stable/privacy.html>`_ and therefore this should only be viewable by direct search from a link.
+
+    Below are details on the privacy levels.
+
+    +------------+------------+-----------+-----------+-------------+
+    | Level      | Detail     | Listing   | Search    | Viewing     |
+    +============+============+===========+===========+=============+
+    | Private    | No         | No        | No        | Yes         |
+    +------------+------------+-----------+-----------+-------------+
+    | Public     | Yes        | Yes       | Yes       | Yes         |
+    +------------+------------+-----------+-----------+-------------+
+
 This is the repository of CVLAB toolbox, which contains various subspace methods for classification.
 
 All of the code is from the Computer Vision Laboratory (CVLAB), Graduate school of Systems and Information Engineering, University of Tsukuba (`web <https://en.home.cvlab.cs.tsukuba.ac.jp/>`_). Please check the `github repo <https://github.com/ComputerVisionLaboratory/cvlab_toolbox>`_ for individual credits.
@@ -14,9 +27,7 @@ All of the code is from the Computer Vision Laboratory (CVLAB), Graduate school 
 - Our laboratory serves as one of the machine learning units in `the Center for Artificial Intelligence Research (C-AIR) <https://air.tsukuba.ac.jp/en/faculty/>`_.
 - Our laboratory also is involved with `the Empowerment Informatics Program for Leading Graduate Schools <http://www.emp.tsukuba.ac.jp/english/>`_. If you are interested in this program, please feel free to contact Prof. Fukui or Prof. Iizuka with any questions.
 
-**Caution**.
-This is not the official documentation, it's just an demo RTD I made to check if RTD hosting worked.
-Please see `this repo <https://github.com/ComputerVisionLaboratory/cvlab_toolbox>`_ for the latest stable stuff. 
+
 
 
 Installation

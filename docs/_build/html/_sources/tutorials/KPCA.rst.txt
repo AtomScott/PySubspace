@@ -35,5 +35,6 @@ In many kernel based classification methods, the Radial Basis Function Kernel is
     Subspaces methods such as KMSM and KCMSM universally use RBF as the kernel. RBF is also the default parameter for in support vector classifier in the `scikit-learn implementation <https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html>`_ .
 
 
-Calculation of PCA
-------------------
+Calculation of KPCA
+-------------------
+

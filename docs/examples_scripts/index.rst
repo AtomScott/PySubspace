@@ -83,13 +83,13 @@ Below is a gallery of examples
 
   .. container:: sphx-glr-download
 
-    :download:`Download all examples in Python source code: examples_scripts_python.zip <//home/member/github/BS-thesis/cvlab_toolbox/docs/examples_scripts/examples_scripts_python.zip>`
+    :download:`Download all examples in Python source code: examples_scripts_python.zip <//home/atom/cvlab/thesis/cvlab_toolbox/docs/examples_scripts/examples_scripts_python.zip>`
 
 
 
   .. container:: sphx-glr-download
 
-    :download:`Download all examples in Jupyter notebooks: examples_scripts_jupyter.zip <//home/member/github/BS-thesis/cvlab_toolbox/docs/examples_scripts/examples_scripts_jupyter.zip>`
+    :download:`Download all examples in Jupyter notebooks: examples_scripts_jupyter.zip <//home/atom/cvlab/thesis/cvlab_toolbox/docs/examples_scripts/examples_scripts_jupyter.zip>`
 
 
 .. only:: html
