@@ -1,8 +1,10 @@
 if [ $(basename $(pwd)) = 'cvlab_toolbox' ]
     then
-        sphinx-apidoc -f -o ./docs/source ./cvt
-        sphinx-build ./docs ./docs/_build
-        make html
+        sphinx-build ./docs _build
+        # I think sphinx-build runs all the below as well.
+        # sphinx-autogen ./docs/source/classes.rst
+        # sphinx-apidoc -f -o ./docs/source ./cvt
+        make -C docs html
     else
         echo Wrong directory
         echo Run in cvlab_toolbox

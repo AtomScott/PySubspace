@@ -92,8 +92,9 @@ We use a Scikit-learn API so it should be pretty easy to get your code up and ru
 
 .. toctree::
     :maxdepth: 4
-    :caption: API reference
+    :caption: References
     
+    ./source/classes
     ./source/cvt
 
 .. toctree::

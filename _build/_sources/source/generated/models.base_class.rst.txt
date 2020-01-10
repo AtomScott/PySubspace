@@ -1,0 +1,26 @@
+models.base\_class
+==================
+
+.. automodule:: models.base_class
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      ConstrainedSMBase
+      KernelCSMBase
+      KernelSMBase
+      MSMInterface
+      SMBase
+   
+   
+
+   
+   
+   

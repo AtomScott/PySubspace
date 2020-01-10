@@ -1,0 +1,321 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API Reference &mdash; cvlab_toolbox 0.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="cvt.models.base_class" href="generated/cvt.models.base_class.html" />
+    <link rel="prev" title="From PCA to the Subspace Method" href="../examples/pca_to_sm.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> cvlab_toolbox
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/getting_started.html">Subspace Methods at a Glance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Concepts Walkthrough</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/references.html">References</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/MNIST_example_with_SM.html">MNIST example with Subspace Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/pca_to_sm.html">From PCA to the Subspace Method</a></li>
+</ul>
+<p class="caption"><span class="caption-text">References</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#base-classes">Base classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/cvt.models.base_class.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cvt.models</span></code>.base_class</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#model-classes">Model classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/cvt.models.SubspaceMethod.html">cvt.models.SubspaceMethod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/cvt.models.MutualSubspaceMethod.html">cvt.models.MutualSubspaceMethod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/cvt.models.cmsm.html">cvt.models.cmsm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/cvt.models.kmsm.html">cvt.models.kmsm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/cvt.models.kcmsm.html">cvt.models.kcmsm</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#utils-classes">Utils classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/cvt.utils.base.html">cvt.utils.base</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/cvt.utils.evaluation.html">cvt.utils.evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/cvt.utils.kernel_functions.html">cvt.utils.kernel_functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cvt.html">cvt package</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contribution</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html">Coding styles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html#contribution-rules">Contribution rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribution/contribution.html#mathematical-notation">Mathematical Notation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Gallery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples_scripts/index.html">Gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cvlab_toolbox</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>API Reference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/source/classes.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
+<p>This is the class and function reference of scikit-learn. Please refer to
+the <span class="xref std std-ref">full user guide</span> for further details, as the class and
+function raw specifications may not be enough to give full guidelines on their
+uses.
+For reference on concepts repeated across the API, see <span class="xref std std-ref">glossary</span>.</p>
+<div class="section" id="base-classes">
+<h2>Base classes<a class="headerlink" href="#base-classes" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/cvt.models.base_class.html#cvt.models.base_class" title="cvt.models.base_class"><code class="xref py py-obj docutils literal notranslate"><span class="pre">models.base_class</span></code></a></p></td>
+<td><p>Subspace Method Interface</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="model-classes">
+<h2>Model classes<a class="headerlink" href="#model-classes" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/cvt.models.SubspaceMethod.html#cvt.models.SubspaceMethod" title="cvt.models.SubspaceMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">models.SubspaceMethod</span></code></a>(n_subdims[, …])</p></td>
+<td><p>Mutual Subspace Method</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/cvt.models.MutualSubspaceMethod.html#cvt.models.MutualSubspaceMethod" title="cvt.models.MutualSubspaceMethod"><code class="xref py py-obj docutils literal notranslate"><span class="pre">models.MutualSubspaceMethod</span></code></a>(n_subdims[, …])</p></td>
+<td><p>Mutual Subspace Method</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/cvt.models.cmsm.html#module-cvt.models.cmsm" title="cvt.models.cmsm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">models.cmsm</span></code></a></p></td>
+<td><p>Constrained Mutual Subspace Method</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/cvt.models.kmsm.html#module-cvt.models.kmsm" title="cvt.models.kmsm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">models.kmsm</span></code></a></p></td>
+<td><p>Kernel Mutual Subspace Method</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/cvt.models.kcmsm.html#module-cvt.models.kcmsm" title="cvt.models.kcmsm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">models.kcmsm</span></code></a></p></td>
+<td><p>Kernel Constrained Mutual Subspace Method</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="utils-classes">
+<h2>Utils classes<a class="headerlink" href="#utils-classes" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/cvt.utils.base.html#module-cvt.utils.base" title="cvt.utils.base"><code class="xref py py-obj docutils literal notranslate"><span class="pre">utils.base</span></code></a></p></td>
+<td><p>Mathematical utilities</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/cvt.utils.evaluation.html#module-cvt.utils.evaluation" title="cvt.utils.evaluation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">utils.evaluation</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/cvt.utils.kernel_functions.html#module-cvt.utils.kernel_functions" title="cvt.utils.kernel_functions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">utils.kernel_functions</span></code></a></p></td>
+<td><p>Kernel functions</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="generated/cvt.models.base_class.html" class="btn btn-neutral float-right" title="cvt.models.base_class" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../examples/pca_to_sm.html" class="btn btn-neutral float-left" title="From PCA to the Subspace Method" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Atom Scott
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

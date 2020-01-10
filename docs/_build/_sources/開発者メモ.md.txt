@@ -24,6 +24,8 @@
 - 画像ファイルなどの静的なものは_staticに入れる
 - [Read the docs](https://readthedocs.org/)でホスティング．
 
+- 新たにPyPiパッケージなどを追加する際(=import xxx)するときはrequirements.txtを更新すること
+
 ## Notebook を使うときの諸注意
 Using Notebooks with Git
 

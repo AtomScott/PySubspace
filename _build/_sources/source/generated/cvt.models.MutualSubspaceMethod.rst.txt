@@ -1,0 +1,36 @@
+cvt.models.MutualSubspaceMethod
+===============================
+
+.. currentmodule:: cvt.models
+
+.. autoclass:: MutualSubspaceMethod
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~MutualSubspaceMethod.__init__
+      ~MutualSubspaceMethod.fit
+      ~MutualSubspaceMethod.get_params
+      ~MutualSubspaceMethod.predict
+      ~MutualSubspaceMethod.predict_proba
+      ~MutualSubspaceMethod.proba2class
+      ~MutualSubspaceMethod.score
+      ~MutualSubspaceMethod.set_params
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~MutualSubspaceMethod.param_names
+      ~MutualSubspaceMethod.test_n_subdims
+   
+   

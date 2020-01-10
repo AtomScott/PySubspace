@@ -1,0 +1,22 @@
+cvt.models.cmsm
+===============
+
+.. automodule:: cvt.models.cmsm
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      ConstrainedMSM
+   
+   
+
+   
+   
+   

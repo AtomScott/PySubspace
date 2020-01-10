@@ -1,0 +1,22 @@
+cvt.models.kmsm
+===============
+
+.. automodule:: cvt.models.kmsm
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      KernelMSM
+   
+   
+
+   
+   
+   
