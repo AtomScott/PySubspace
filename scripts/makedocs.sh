@@ -1,6 +1,6 @@
 if [ $(basename $(pwd)) = 'cvlab_toolbox' ]
     then
-        sphinx-apidoc -f -o ./docs ./docs/_build
+        sphinx-apidoc -f -o ./docs/source ./cvt
         sphinx-build ./docs ./docs/_build
         make html
     else
