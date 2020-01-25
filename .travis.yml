@@ -9,4 +9,9 @@ install:
   - pip install .
   
 # command to run tests 
-script: pytest tests
+script: 
+  - pytest tests
+  - pytest --cov=cvt tests
+
+after_success:
+  - coveralls

@@ -1,0 +1,4 @@
+codecov==2.0.15
+coverage==4.5.4
+pytest-cov==2.8.1
+python-coveralls==2.9.3
