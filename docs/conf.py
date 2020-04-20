@@ -23,8 +23,8 @@ import cvt
 
 # -- Project information -----------------------------------------------------
 
-project = 'cvlab_toolbox'
-copyright = '2019, Atom Scott'
+project = 'PySubspace'
+copyright = '2020, Atom Scott'
 author = 'Atom Scott'
 
 # The full version, including alpha/beta/rc tags
@@ -71,8 +71,17 @@ html_theme = 'sphinx_rtd_theme'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
+html_css_files = [
+    'css/colors.css',
+]
+
+html_style = 'css/colors.css'
+
 html_theme_options = {
     'prev_next_buttons_location': 'bottom',
+
+    # color styling
+    'style_nav_header_background': '#1b1f23',
 
     # Toc options
     'collapse_navigation': True,

@@ -1,4 +1,4 @@
-if [ $(basename $(pwd)) = 'cvlab_toolbox' ]
+if [ $(basename $(pwd)) = 'PySubspace' ]
     then
         sphinx-build ./docs _build
         # I think sphinx-build runs all the below as well.
